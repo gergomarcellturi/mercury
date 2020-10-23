@@ -104,7 +104,7 @@ A szabvány elismert szervezet által alkotott vagy jóváhagyott, közmegegyez�
     - Üzenetek automatikus frissítése
 
 ## 8. Használati esetek
-![A diagram.](./images/a.png)
+![A diagram.](./images/f.png)
 
 ## 9. Képernyő tervek
 
