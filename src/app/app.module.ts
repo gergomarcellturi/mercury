@@ -5,12 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MessageDialogComponent } from './shared/dialogs/message-dialog/message-dialog.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { PasswordReminderComponent } from './components/login/dialogs/password-reminder/password-reminder.component';
+import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MessageDialogComponent
+    MessageDialogComponent,
+    RegistrationComponent,
+    PasswordReminderComponent,
+    HomeComponent,
+    FooterComponent,
+    HeaderComponent,
+    SidebarComponent,
+    NotesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
