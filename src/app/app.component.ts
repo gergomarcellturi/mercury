@@ -3,10 +3,9 @@ import {TranslateService} from '@ngx-translate/core';
 import {environment} from '../environments/environment';
 import {FirebaseApp} from '@angular/fire';
 import {AngularFireDatabase} from '@angular/fire/database';
-import {Observable, pipe} from 'rxjs';
-import {User} from './api/dto/User';
+import {Observable} from 'rxjs';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {map, switchMap} from 'rxjs/operators';
+import {User} from './api/interfaces/User';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +27,6 @@ export class AppComponent {
     translate.use(environment.defaultLang);
     this.db.collection('users').valueChanges().subscribe(console.log);
     this.chat = this.db.collection('chat').valueChanges() as Observable<User[]>;
-    // this.chat = this.db.collection('chat').get();
 
   }
 }
