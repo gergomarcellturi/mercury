@@ -28,7 +28,6 @@ export class AppComponent {
     translate.use(environment.defaultLang);
     this.db.collection('users').valueChanges().subscribe(console.log);
     this.chat = this.db.collection('chat').valueChanges() as Observable<User[]>;
-    this.chat.forEach(console.log);
     // this.chat = this.db.collection('chat').get();
 
   }
