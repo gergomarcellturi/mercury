@@ -13,6 +13,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { AboutComponent } from './components/about/about.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'assets/translations/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -30,7 +37,15 @@ import { AboutComponent } from './components/about/about.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
