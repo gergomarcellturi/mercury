@@ -1,7 +1,7 @@
 {{'HOME' | translate}}
 
 <ul>
-  <li *ngFor="let user of users | async">
+  <li *ngFor="let user of chat | async ">
       {{user | json}}
   </li>
 </ul>
