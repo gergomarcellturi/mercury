@@ -16,6 +16,9 @@ import { AboutComponent } from './components/about/about.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -37,6 +40,8 @@ function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.fireBaseConfig),
+    AngularFireDatabaseModule,
     HttpClientModule,
     AppRoutingModule,
     TranslateModule.forRoot({
