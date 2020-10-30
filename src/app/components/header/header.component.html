@@ -1,1 +1,33 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+  <div class="header-container">
+    <span class="left">
+      <mat-icon>chat_bubble_outline</mat-icon>
+      <mat-icon>notes</mat-icon>
+    </span>
+
+    <span class="right">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </span>
+  </div>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>person</mat-icon>
+    <span>Profile</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>settings</mat-icon>
+    <span>Preferences</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>login</mat-icon>
+    <span>Log out</span>
+  </button>
+</mat-menu>

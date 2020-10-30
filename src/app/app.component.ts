@@ -4,8 +4,8 @@ import {environment} from '../environments/environment';
 import {FirebaseApp} from '@angular/fire';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {Observable} from 'rxjs';
+import {User} from './api/dto/User';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {User} from './api/interfaces/User';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +25,5 @@ export class AppComponent {
     private db: AngularFirestore
   ) {
     translate.use(environment.defaultLang);
-    this.db.collection('users').valueChanges().subscribe(console.log);
-    this.chat = this.db.collection('chat').valueChanges() as Observable<User[]>;
-
   }
 }
