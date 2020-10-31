@@ -1,9 +1,22 @@
-{{'HOME' | translate}}
+<label>
+  <input [(ngModel)]="text">
+</label>
+<button (click)="sendMessage()">send</button>
 
-<ul>
-  <li *ngFor="let user of chat | async ">
-    {{user | json}}
-  </li>
-</ul>
+<div *ngIf="authenticationService.user$ | async as user; else login">
+  {{user | json}}
+  <hr>
 
-<app-login></app-login>
+  <div *ngFor="let message of messages" [class.to-right]="user.uid === message.uid">
+    [{{message.timestamp?.seconds * 1000 | date: 'yyyy.MM.dd hh:mm:ss'}}] {{message.from}}: {{message.text}}
+  </div>
+
+  <button class="button" (click)="authenticationService.signOut()">Sign Out</button>
+</div>
+
+<ng-template #login>
+  <button class="button" (click)="authenticationService.googleSignIn()">Log in with Google</button>
+</ng-template>
+
+
+<router-outlet></router-outlet>

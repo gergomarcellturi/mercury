@@ -1,0 +1,20 @@
+mat-toolbar {
+  height: 50px;
+}
+
+.header-container {
+  width: 95%;
+  margin: 0 auto 0 auto;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+mat-icon {
+  margin-left: .3em;
+}
