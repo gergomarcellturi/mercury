@@ -24,6 +24,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
+import {AngularSplitModule} from 'angular-split';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -45,6 +46,7 @@ function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    AngularSplitModule.forRoot(),
     AngularFireModule.initializeApp(environment.fireBaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
