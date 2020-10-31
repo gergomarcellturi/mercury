@@ -1,1 +1,11 @@
-<p>home works!</p>
+<app-header></app-header>
+<div style="width: 100%; height: calc(100% - 50px); background: grey;">
+  <as-split direction="horizontal">
+    <as-split-area [size]="20" minSize="5" maxSize="20">
+      <p>LEFT</p>
+    </as-split-area>
+    <as-split-area [size]="80">
+      <p>RIGHT</p>
+    </as-split-area>
+  </as-split>
+</div>
