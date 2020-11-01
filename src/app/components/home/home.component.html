@@ -5,7 +5,17 @@
       <p>LEFT</p>
     </as-split-area>
     <as-split-area [size]="80">
-      <p>RIGHT</p>
+      <div *ngIf="authenticationService.user$ | async as user">
+
+        <div *ngFor="let message of messages" [class.to-right]="user.uid === message.uid">
+          [{{message.timestamp?.seconds * 1000 | date: 'yyyy.MM.dd hh:mm:ss'}}] {{message.from}}: {{message.text}}
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="story">Tell us your story:</label>
+        <textarea [(ngModel)]="text" id="story" cols="50" rows="3" (keydown)="onKeyPressed($event)"></textarea>
+      </div>
     </as-split-area>
   </as-split>
 </div>
