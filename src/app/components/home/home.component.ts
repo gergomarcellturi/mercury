@@ -16,11 +16,12 @@ export class HomeComponent implements OnInit {
   @ViewChild('scrollRef', {static: false})
   public scrollRef: ElementRef;
 
-
+  toggled: boolean = false;
   public chat: Observable<User[]>;
   public users: Observable<User[]>;
-  public text: string;
+  public text: string = '';
   public messages: {text: string, uid: string, from: string, timestamp: {seconds: number, nanoseconds: number}}[];
+  private messagesLenght: number = -1;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -30,11 +31,17 @@ export class HomeComponent implements OnInit {
     translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
-      this.scrollRef.nativeElement.scrollIntoView({ behavior: 'smooth'});
     });
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewChecked() {
+    if (this.messages && this.messages.length !== this.messagesLenght) {
+      this.messagesLenght = this.messages.length;
+      this.scrollRef.nativeElement.scrollIntoView({behavior: "smooth"});
+    }
   }
 
   public sendMessage = (): void => {
@@ -45,17 +52,21 @@ export class HomeComponent implements OnInit {
     this.text = '';
   }
 
-  public isSamePerson = () => {
-
-  }
-
   public onKeyPressed(event) {
     if (event.key === 'Enter') {
       this.sendMessage();
     }
   }
 
+  handleSelection(event) {
+    this.text += event.char;
+  }
+
   public showMessageSender(index: number): boolean {
     return index > 0 ? this.messages[index].uid !== this.messages[index - 1].uid : true;
+  }
+
+  public trackByUid(index, item) {
+    return item.uid;
   }
 }

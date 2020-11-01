@@ -7,7 +7,10 @@
     <as-split-area [size]="80">
 
       <div class="chat-container" *ngIf="authenticationService.user$ | async as user">
-        <div class="message-container" *ngFor="let message of messages; index as index" [class.to-right]="user.uid === message.uid">
+        <div class="message-container" *ngFor="let message of messages; index as index; trackBy: trackByUid" [class.to-right]="user.uid === message.uid">
+          <span [class.to-right]="user.uid === message.uid">
+            <mat-icon>person</mat-icon>
+          </span>
           <div class="message" [class.own-message]="user.uid === message.uid">
             <div class="sender" *ngIf="showMessageSender(index)">
               {{message.from}}
@@ -18,12 +21,19 @@
             {{message.text}}
           </div>
         </div>
-        <div #scrollRef></div>
+        <div class="scrollRef" #scrollRef></div>
       </div>
 
       <div class="input-container">
         <label for="story">Tell us your story:</label>
         <textarea [(ngModel)]="text" id="story" cols="50" rows="3" (keydown)="onKeyPressed($event)"></textarea>
+        <i
+          (click)="toggled = !toggled"
+          [(emojiPickerIf)]="toggled"
+          [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+          (emojiPickerSelect)="handleSelection($event)"
+        >😄</i
+        >
       </div>
     </as-split-area>
   </as-split>

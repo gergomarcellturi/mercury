@@ -27,8 +27,10 @@
     "angular-split": "^4.0.0",
     "angularfire2": "^5.4.2",
     "firebase": "^7.13.1",
+    "ngx-emoji-picker": "^0.1.6",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "twemoji": "^13.0.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
