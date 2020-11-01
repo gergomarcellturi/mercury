@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {User} from '../../api/interfaces/User';
 import {ChatService} from '../../api/services/communication/chat.service';
@@ -11,17 +11,17 @@ import {TranslateService} from '@ngx-translate/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scrollRef', {static: false})
   public scrollRef: ElementRef;
 
-  toggled: boolean = false;
+  toggled = false;
   public chat: Observable<User[]>;
   public users: Observable<User[]>;
-  public text: string = '';
+  public text = '';
   public messages: {text: string, uid: string, from: string, timestamp: {seconds: number, nanoseconds: number}}[];
-  private messagesLenght: number = -1;
+  private messagesLenght = -1;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.messages && this.messages.length !== this.messagesLenght) {
       this.messagesLenght = this.messages.length;
-      this.scrollRef.nativeElement.scrollIntoView({behavior: "smooth"});
+      this.scrollRef.nativeElement.scrollIntoView({behavior: 'smooth'});
     }
   }
 

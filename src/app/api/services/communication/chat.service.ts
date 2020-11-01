@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AuthenticationService} from '../misc/authentication.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {switchMap, timestamp} from 'rxjs/operators';
 import * as firebase from 'firebase';
 
 @Injectable({
