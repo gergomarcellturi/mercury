@@ -1,5 +1,35 @@
+.chat-container {
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+.message-container {
+  margin: 0 2em 0 2em;
+}
+
 .to-right {
   text-align: right;
+}
+
+.message {
+  display: inline-block;
+  margin: .5em 0 .5em 0;
+  padding: .5em;
+  border-radius: 10px;
+  max-width: 60%;
+  background-color: aqua;
+}
+
+.own-message {
+  background-color: deeppink;
+}
+
+.timestamp {
+  position: relative;
+  bottom: 7px;
+  color: darkgrey;
+  font-size: 10px;
+  font-style: italic;
 }
 
 .input-container {

@@ -5,10 +5,18 @@
       <p>LEFT</p>
     </as-split-area>
     <as-split-area [size]="80">
-      <div *ngIf="authenticationService.user$ | async as user">
 
-        <div *ngFor="let message of messages" [class.to-right]="user.uid === message.uid">
-          [{{message.timestamp?.seconds * 1000 | date: 'yyyy.MM.dd hh:mm:ss'}}] {{message.from}}: {{message.text}}
+      <div class="chat-container" *ngIf="authenticationService.user$ | async as user">
+        <div class="message-container" *ngFor="let message of messages" [class.to-right]="user.uid === message.uid">
+          <div class="sender">
+            {{message.from}}
+          </div>
+          <div class="message" [class.own-message]="user.uid === message.uid">
+            {{message.text}}
+          </div>
+          <div class="timestamp">
+            {{message.timestamp?.seconds * 1000 | date: 'yyyy.MM.dd hh:mm'}}
+          </div>
         </div>
       </div>
 
