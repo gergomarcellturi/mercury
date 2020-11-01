@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {User} from '../../api/interfaces/User';
 import {ChatService} from '../../api/services/communication/chat.service';
@@ -13,6 +13,10 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild('scrollRef', {static: false})
+  public scrollRef: ElementRef;
+
+
   public chat: Observable<User[]>;
   public users: Observable<User[]>;
   public text: string;
@@ -26,7 +30,7 @@ export class HomeComponent implements OnInit {
     translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
-      console.log(this.messages[3].timestamp);
+      this.scrollRef.nativeElement.scrollIntoView({ behavior: 'smooth'});
     });
   }
 
@@ -49,5 +53,9 @@ export class HomeComponent implements OnInit {
     if (event.key === 'Enter') {
       this.sendMessage();
     }
+  }
+
+  public showMessageSender(index: number): boolean {
+    return index > 0 ? this.messages[index].uid !== this.messages[index - 1].uid : true;
   }
 }

@@ -25,15 +25,17 @@
 }
 
 .timestamp {
-  position: relative;
-  bottom: 7px;
+  margin: 1em;
   color: darkgrey;
   font-size: 10px;
   font-style: italic;
 }
 
 .input-container {
-  text-align: center;
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-25%, 0);
 }
 
 label,
