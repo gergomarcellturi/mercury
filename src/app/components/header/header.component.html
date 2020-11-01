@@ -27,7 +27,9 @@
     <span>Disable alerts</span>
   </button>
   <button mat-menu-item>
-    <mat-icon>login</mat-icon>
-    <span>Log out</span>
+    <button mat-flat-button class="button" (click)="authenticationService.signOut()">
+      <mat-icon>login</mat-icon>
+      <span>Log out</span>
+    </button>
   </button>
 </mat-menu>
