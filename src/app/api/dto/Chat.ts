@@ -1,6 +1,5 @@
 import {User} from '../interfaces/User';
 
-
 export class Chat {
   participants: User[];
   messages: {
