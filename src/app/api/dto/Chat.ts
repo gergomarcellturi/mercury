@@ -1,4 +1,5 @@
-import {User} from './User';
+import {User} from '../interfaces/User';
+
 
 export class Chat {
   participants: User[];
