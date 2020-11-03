@@ -1,10 +1,10 @@
 <app-header></app-header>
 <div style="width: 100%; height: calc(100% - 50px); background: grey;">
-  <as-split direction="horizontal">
-    <as-split-area [size]="20" minSize="5" maxSize="20">
-      <p>LEFT</p>
+  <as-split direction="horizontal" unit="percent" useTransition="true" disabled="true">
+    <as-split-area [size]="leftSidebar" minSize="5" maxSize="20">
+      <button (click)="sidebarAction()">notice me</button>
     </as-split-area>
-    <as-split-area [size]="80">
+    <as-split-area [size]="rightSidebar">
 
       <div class="chat-container" *ngIf="authenticationService.user$ | async as user">
         <div class="message-container" *ngFor="let message of messages; index as index; trackBy: trackByUid" [class.to-right]="user.uid === message.uid">
