@@ -21,9 +21,10 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public users: Observable<User[]>;
   public text = '';
   public messages: {text: string, uid: string, from: string, timestamp: {seconds: number, nanoseconds: number}}[];
-  private messagesLenght = -1;
+  private messagesLength = -1;
   public rightSidebar = 80;
   public leftSidebar = 20;
+  public showEmojiPicker = false;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -43,8 +44,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     if (this.messages) {
       const chatElements = document.getElementsByClassName('chat-container').item(0);
       const scrollDownPerc = chatElements.scrollTop / chatElements.scrollHeight;
-      if (this.messages.length !== this.messagesLenght && scrollDownPerc > .8) {
-        this.messagesLenght = this.messages.length;
+      if (this.messages.length !== this.messagesLength && scrollDownPerc > .8) {
+        this.messagesLength = this.messages.length;
         this.scrollRef.nativeElement.scrollIntoView({behavior: 'smooth'});
       }
     }
@@ -84,5 +85,15 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       this.leftSidebar = 20;
       this.rightSidebar = 80;
     }
+  }
+
+  public toggleEmojiPicker() {
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
+
+  public addEmoji(event) {
+    const { text } = this;
+    this.text = `${text}${event.emoji.native}`;
+    this.showEmojiPicker = false;
   }
 }

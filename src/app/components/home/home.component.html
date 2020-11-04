@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div style="width: 100%; height: calc(100% - 50px); background: grey;">
+<div style="width: 100%; height: calc(100% - 50px); background: whitesmoke;">
   <as-split direction="horizontal" unit="percent" useTransition="true" disabled="true">
     <as-split-area [size]="leftSidebar" minSize="5" maxSize="20">
       <button (click)="sidebarAction()">notice me</button>
@@ -8,7 +8,7 @@
 
       <div class="chat-container" *ngIf="authenticationService.user$ | async as user">
         <div class="message-container" *ngFor="let message of messages; index as index; trackBy: trackByUid" [class.to-right]="user.uid === message.uid">
-          <span [class.to-right]="user.uid === message.uid">
+          <span *ngIf="showMessageSender(index) && user.uid !== message.uid">
             <mat-icon>person</mat-icon>
           </span>
           <div class="message" [class.own-message]="user.uid === message.uid">
@@ -20,21 +20,25 @@
             </div>
             {{message.text}}
           </div>
+          <span *ngIf="showMessageSender(index) && user.uid === message.uid">
+            <mat-icon>person</mat-icon>
+          </span>
         </div>
         <div class="scrollRef" #scrollRef></div>
       </div>
 
-      <div class="input-container">
-        <label for="story">Tell us your story:</label>
-        <textarea [(ngModel)]="text" id="story" cols="50" rows="3" (keydown)="onKeyPressed($event)"></textarea>
-        <i
-          (click)="toggled = !toggled"
-          [(emojiPickerIf)]="toggled"
-          [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
-          (emojiPickerSelect)="handleSelection($event)"
-        >😄</i
-        >
-      </div>
+      <footer class="chat-footer">
+        <emoji-mart class="emoji-mart" (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker" title="Pick your emoji…"></emoji-mart>
+        <form (ngSubmit)='sendMessage()'>
+          <button
+            type="button"
+            class="toggle-emoji"
+            (click)="toggleEmojiPicker()">
+            <i-feather name="smile"></i-feather>
+          </button>
+          <input placeholder="Type some shit and hit enter to send" type="text" name="message" [(ngModel)]="text">
+        </form>
+      </footer>
     </as-split-area>
   </as-split>
 </div>

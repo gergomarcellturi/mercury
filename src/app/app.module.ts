@@ -26,7 +26,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {AngularSplitModule} from 'angular-split';
 import {FormsModule} from '@angular/forms';
-import  {  NgxEmojiPickerModule  }  from  'ngx-emoji-picker';
+import {IconsModule} from './icons/icons.module';
+import {PickerModule} from '@ctrl/ngx-emoji-mart';
+import {NgxEmojModule} from 'ngx-emoj';
+import {EmojiModule} from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -48,12 +51,12 @@ function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    NgxEmojiPickerModule.forRoot(),
     AngularSplitModule.forRoot(),
     AngularFireModule.initializeApp(environment.fireBaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
     AppRoutingModule,
+    IconsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -66,7 +69,10 @@ function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    FormsModule
+    FormsModule,
+    PickerModule,
+    NgxEmojModule,
+    EmojiModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
