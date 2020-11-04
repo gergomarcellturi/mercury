@@ -31,6 +31,7 @@
     "emoji-mart": "^3.0.0",
     "firebase": "^7.13.1",
     "giphy-api": "^2.0.1",
+    "ng-push-ivy": "^1.0.6",
     "ngx-emoj": "0.0.7",
     "rxjs": "~6.5.4",
     "skeleton-css": "^2.0.4",

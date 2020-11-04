@@ -5,6 +5,7 @@ import {ChatService} from '../../api/services/communication/chat.service';
 import {AuthenticationService} from '../../api/services/misc/authentication.service';
 import {environment} from '../../../environments/environment';
 import {TranslateService} from '@ngx-translate/core';
+import {PushNotificationsService} from 'ng-push-ivy';
 
 @Component({
   selector: 'app-home',
@@ -30,11 +31,14 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     public authenticationService: AuthenticationService,
     private translate: TranslateService,
     public chatService: ChatService,
+    private pushNotification: PushNotificationsService,
     ) {
     translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
+      this.notify(this.messages[this.messages.length - 1].from, this.messages[this.messages.length - 1].text);
     });
+    this.pushNotification.requestPermission();
   }
 
   ngOnInit(): void {
@@ -95,5 +99,12 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     const { text } = this;
     this.text = `${text}${event.emoji.native}`;
     this.showEmojiPicker = false;
+  }
+
+  private notify(sender: string, message: string) {
+    this.pushNotification.create(sender, {body: message}).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
   }
 }
