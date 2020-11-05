@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
-      this.notify(this.messages[this.messages.length - 1].from, this.messages[this.messages.length - 1].text);
+      this.notify(this.messages[this.messages.length - 1]);
     });
     this.pushNotification.requestPermission();
   }
@@ -61,16 +61,6 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
     this.chatService.sendMessage(this.text, '1uFaAU4p6ElQ3vEIkuAA');
     this.text = '';
-  }
-
-  public onKeyPressed(event) {
-    if (event.key === 'Enter') {
-      this.sendMessage();
-    }
-  }
-
-  handleSelection(event) {
-    this.text += event.char;
   }
 
   public showMessageSender(index: number): boolean {
@@ -101,10 +91,15 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     this.showEmojiPicker = false;
   }
 
-  private notify(sender: string, message: string) {
-    this.pushNotification.create(sender, {body: message}).subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    );
+  private notify({uid, from, text}) {
+    this.authenticationService.user$.subscribe(user => {
+      if (user.uid === uid || document.hasFocus()) {
+        return;
+      }
+      this.pushNotification.create(from, {body: text}).subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      );
+    });
   }
 }
