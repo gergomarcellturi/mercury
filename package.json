@@ -26,7 +26,6 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "angular-feather": "^6.0.10",
-    "angular-split": "^4.0.0",
     "angularfire2": "^5.4.2",
     "emoji-mart": "^3.0.0",
     "firebase": "^7.13.1",

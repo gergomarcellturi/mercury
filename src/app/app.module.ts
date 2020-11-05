@@ -24,7 +24,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-import {AngularSplitModule} from 'angular-split';
 import {FormsModule} from '@angular/forms';
 import {IconsModule} from './icons/icons.module';
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
@@ -52,7 +51,6 @@ function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    AngularSplitModule.forRoot(),
     AngularFireModule.initializeApp(environment.fireBaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
