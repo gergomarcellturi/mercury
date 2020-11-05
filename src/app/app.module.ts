@@ -30,6 +30,7 @@ import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {NgxEmojModule} from 'ngx-emoj';
 import {EmojiModule} from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import {PushNotificationsModule} from 'ng-push-ivy';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -73,6 +74,7 @@ function HttpLoaderFactory(http: HttpClient) {
     NgxEmojModule,
     EmojiModule,
     PushNotificationsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
