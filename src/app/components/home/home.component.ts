@@ -23,9 +23,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public text = '';
   public messages: {text: string, uid: string, from: string, timestamp: {seconds: number, nanoseconds: number}}[];
   private messagesLength = -1;
-  public rightSidebar = 80;
-  public leftSidebar = 20;
   public showEmojiPicker = false;
+  public collapseSidebar = false;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -72,13 +71,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   public sidebarAction() {
-    if (this.leftSidebar === 20) {
-      this.leftSidebar = 5;
-      this.rightSidebar = 95;
-    } else {
-      this.leftSidebar = 20;
-      this.rightSidebar = 80;
-    }
+    this.collapseSidebar = !this.collapseSidebar;
   }
 
   public toggleEmojiPicker() {
