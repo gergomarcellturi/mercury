@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   private messagesLength = -1;
   public showEmojiPicker = false;
   public collapseSidebar = false;
+  public chatView = true;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -68,10 +69,6 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
   public trackByUid(index, item) {
     return item.uid;
-  }
-
-  public sidebarAction() {
-    this.collapseSidebar = !this.collapseSidebar;
   }
 
   public toggleEmojiPicker() {

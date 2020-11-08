@@ -1,8 +1,12 @@
 <mat-toolbar color="primary">
   <div class="header-container">
     <span class="left">
-      <mat-icon>chat_bubble_outline</mat-icon>
-      <mat-icon>notes</mat-icon>
+      <button (click)="action(true)">
+        <mat-icon>chat_bubble_outline</mat-icon>
+      </button>
+      <button (click)="action(false)">
+        <mat-icon>notes</mat-icon>
+      </button>
     </span>
 
     <span class="right">

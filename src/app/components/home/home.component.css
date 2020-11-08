@@ -7,13 +7,22 @@
 
 .sidebar {
   display: block;
-  width: 500px;
+  width: 20%;
   background-color: blueviolet;
   transition: all 1s;
 }
 
 .active {
-  width: 250px;
+  width: 100px;
+}
+
+.right-side {
+  width: 80%;
+  transition: all 1s;
+}
+
+.expanded {
+  width: calc(100% - 100px);
 }
 
 .chat-container {;

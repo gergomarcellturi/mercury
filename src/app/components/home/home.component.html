@@ -1,11 +1,10 @@
-<app-header></app-header>
+<app-header [(chatView)]="chatView"></app-header>
 <div class="wrapper">
   <div class="sidebar" [ngClass]="{'active': collapseSidebar}">
-    <button (click)="sidebarAction()">click me</button>
-    <app-sidebar></app-sidebar>
+    <app-sidebar [(collapse)]="collapseSidebar"></app-sidebar>
   </div>
-  <div>
-    <div class="chat-container" *ngIf="authenticationService.user$ | async as user">
+  <div class="right-side" [ngClass]="{'expanded': collapseSidebar}">
+    <div class="chat-container" *ngIf="chatView && authenticationService.user$ | async as user else notes">
       <div class="message-container" *ngFor="let message of messages; index as index; trackBy: trackByUid"
            [class.to-right]="user.uid === message.uid">
           <span *ngIf="showMessageSender(index) && user.uid !== message.uid">
@@ -26,6 +25,10 @@
       </div>
       <div class="scrollRef" #scrollRef></div>
     </div>
+
+    <ng-template #notes>
+      <app-notes></app-notes>
+    </ng-template>
 
     <footer class="chat-footer">
       <emoji-mart class="emoji-mart" (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker"
