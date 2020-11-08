@@ -48,7 +48,7 @@
 }
 
 .own-message {
-  background-color: deeppink;
+  background-color: var(--primary-color);
 }
 
 .timestamp {

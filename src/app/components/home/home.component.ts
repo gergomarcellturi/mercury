@@ -6,6 +6,7 @@ import {AuthenticationService} from '../../api/services/misc/authentication.serv
 import {environment} from '../../../environments/environment';
 import {TranslateService} from '@ngx-translate/core';
 import {PushNotificationsService} from 'ng-push-ivy';
+import {ThemeService} from '../../api/services/misc/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     private translate: TranslateService,
     public chatService: ChatService,
     private pushNotification: PushNotificationsService,
+    private themeService: ThemeService,
     ) {
     translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit(): void {
+    this.themeService.setActiveTheme(this.themeService.getAvailableThemes()[1]);
   }
 
   ngAfterViewChecked() {
