@@ -1,4 +1,31 @@
-.chat-container {
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  max-height: calc(100% - 50px);;
+}
+
+.sidebar {
+  display: block;
+  width: 20%;
+  background-color: blueviolet;
+  transition: all 1s;
+}
+
+.active {
+  width: 100px;
+}
+
+.right-side {
+  width: 80%;
+  transition: all 1s;
+}
+
+.expanded {
+  width: calc(100% - 100px);
+}
+
+.chat-container {;
   max-height: 80%;
   overflow-y: scroll;
 }
@@ -21,7 +48,7 @@
 }
 
 .own-message {
-  background-color: deeppink;
+  background-color: var(--primary-color);
 }
 
 .timestamp {

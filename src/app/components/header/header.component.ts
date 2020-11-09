@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthenticationService} from '../../api/services/misc/authentication.service';
 
 @Component({
@@ -8,6 +8,9 @@ import {AuthenticationService} from '../../api/services/misc/authentication.serv
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() chatView: boolean;
+  @Output() chatViewChange: EventEmitter<boolean> = new EventEmitter();
+
   constructor(
     public authenticationService: AuthenticationService,
   ) { }
@@ -15,4 +18,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public action(value: boolean) {
+    this.chatView = value;
+    this.chatViewChange.emit(this.chatView);
+  }
 }

@@ -6,6 +6,7 @@ import {AuthenticationService} from '../../api/services/misc/authentication.serv
 import {environment} from '../../../environments/environment';
 import {TranslateService} from '@ngx-translate/core';
 import {PushNotificationsService} from 'ng-push-ivy';
+import {ThemeService} from '../../api/services/misc/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -23,15 +24,16 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public text = '';
   public messages: {text: string, uid: string, from: string, timestamp: {seconds: number, nanoseconds: number}}[];
   private messagesLength = -1;
-  public rightSidebar = 80;
-  public leftSidebar = 20;
   public showEmojiPicker = false;
+  public collapseSidebar = false;
+  public chatView = true;
 
   constructor(
     public authenticationService: AuthenticationService,
     private translate: TranslateService,
     public chatService: ChatService,
     private pushNotification: PushNotificationsService,
+    private themeService: ThemeService,
     ) {
     translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit(): void {
+    this.themeService.setActiveTheme(this.themeService.getAvailableThemes()[1]);
   }
 
   ngAfterViewChecked() {
@@ -69,16 +72,6 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
   public trackByUid(index, item) {
     return item.uid;
-  }
-
-  public sidebarAction() {
-    if (this.leftSidebar === 20) {
-      this.leftSidebar = 5;
-      this.rightSidebar = 95;
-    } else {
-      this.leftSidebar = 20;
-      this.rightSidebar = 80;
-    }
   }
 
   public toggleEmojiPicker() {
