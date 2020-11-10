@@ -31,6 +31,8 @@ import {NgxEmojModule} from 'ngx-emoj';
 import {EmojiModule} from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import {PushNotificationsModule} from 'ng-push-ivy';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PreferencesComponent } from './components/preferences/preferences.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -48,7 +50,9 @@ function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     SidebarComponent,
     NotesComponent,
-    AboutComponent
+    AboutComponent,
+    PreferencesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

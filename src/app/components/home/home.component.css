@@ -2,7 +2,8 @@
   display: flex;
   width: 100%;
   align-items: stretch;
-  max-height: calc(100% - 50px);;
+  min-height: calc(100% - 50px);
+  max-height: calc(100% - 50px);
 }
 
 .sidebar {
@@ -18,11 +19,15 @@
 
 .right-side {
   width: 80%;
-  transition: all 1s;
+  transition: all 1s;;
 }
 
 .expanded {
   width: calc(100% - 100px);
+}
+
+.chat-view {
+  height: 100%;
 }
 
 .chat-container {;

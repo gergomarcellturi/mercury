@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AuthenticationService} from '../misc/authentication.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
-import {switchMap, timestamp} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import * as firebase from 'firebase';
 
 @Injectable({
@@ -29,7 +29,6 @@ export class ChatService {
   }
 
   public sendMessage = (text: string, chatUid: string ): void => {
-    const arrayUnion = firebase.firestore.FieldValue.arrayUnion;
     const chatRef = this.fireStore.doc(`chat/${chatUid}`);
 
     this.authenticationService.user$.subscribe(user => {
@@ -43,7 +42,7 @@ export class ChatService {
       console.log(data);
       chatRef.update(
         {
-          messages: arrayUnion(data),
+          messages: firebase.firestore.FieldValue.arrayUnion(data),
         }
       ).then();
     });

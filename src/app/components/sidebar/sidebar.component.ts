@@ -7,8 +7,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  @Input() collapse: boolean;
-  @Output() collapseChange: EventEmitter<boolean> = new EventEmitter();
+  @Input() collapsed: boolean;
+  @Output() collapsedChange: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
@@ -16,8 +16,8 @@ export class SidebarComponent implements OnInit {
   }
 
   public action() {
-    this.collapse = !this.collapse;
-    this.collapseChange.emit(this.collapse);
+    this.collapsed = !this.collapsed;
+    this.collapsedChange.emit(this.collapsed);
   }
 
 }

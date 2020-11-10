@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (this.messages) {
+    if (this.messages && this.chatView) {
       const chatElements = document.getElementsByClassName('chat-container').item(0);
       const scrollDownPerc = chatElements.scrollTop / chatElements.scrollHeight;
       if (this.messages.length !== this.messagesLength && scrollDownPerc > .8) {

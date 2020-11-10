@@ -1,1 +1,6 @@
-<button (click)="action()">click me</button>
+<div>
+  <button mat-icon-button class="float-right" (click)="action()">
+    <mat-icon *ngIf="!collapsed">keyboard_arrow_left</mat-icon>
+    <mat-icon *ngIf="collapsed">keyboard_arrow_right</mat-icon>
+  </button>
+</div>
