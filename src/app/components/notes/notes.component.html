@@ -1,3 +1,18 @@
 <div class="notes-container">
-
+  <mat-grid-list cols="8" rowHeight="140px">
+    <mat-grid-tile>
+      <div class="note-card">
+        <div class="note-content">
+          <mat-icon class="note-icon">add</mat-icon>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let somthing of [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]">
+      <div class="note-card">
+        <div class="note-content">
+          <mat-icon class="note-icon">notes</mat-icon>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

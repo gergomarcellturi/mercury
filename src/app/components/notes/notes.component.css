@@ -1,0 +1,23 @@
+::ng-deep mat-grid-list {
+  padding: 1em;
+}
+
+.note-card {
+  border: 1px var(--primary-color) solid;
+  border-radius: 15px;
+  background-color: var(--primary-color);
+  height: 120px;
+  width: 80px;
+  padding-bottom: 1em;
+  display: flex;
+  cursor: pointer;
+}
+
+.note-content {
+  align-self: center;
+}
+
+.note-icon {
+  color: white;
+  font-size: 75px;
+}
