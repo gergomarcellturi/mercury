@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent},
   { path: 'preferences', component: PreferencesComponent},
+  { path: '**', redirectTo: '/home'},
 ];
 
 @NgModule({

@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {User} from '../../interfaces/User';
 import {switchMap} from 'rxjs/operators';
 import {auth} from 'firebase';
+import {PreferenceSettings} from '../../interfaces/PreferenceSettings';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ import {auth} from 'firebase';
 export class AuthenticationService {
 
   public user$: Observable<User>;
+  public user: User;
+  public settings$: Observable<PreferenceSettings[]>;
+  public settings: PreferenceSettings;
 
   constructor(
     private fireAuth: AngularFireAuth,
@@ -21,7 +25,15 @@ export class AuthenticationService {
   ) {
     this.user$ = this.fireAuth.authState.pipe(
       switchMap(user => {
-        if (user) return this.fireStore.doc<User>(`users/${user.uid}`).valueChanges();
+        if (user) {
+          this.settings$ = this.fireStore.collection<PreferenceSettings>(
+            'settings',
+            ref => ref.where('userUid', '==', user.uid),
+          ).valueChanges();
+          this.settings$.subscribe(result => result[0] = this.settings);
+          this.fireStore.doc<User>(`users/${user.uid}`).valueChanges().subscribe(result => this.user = result);
+          return this.fireStore.doc<User>(`users/${user.uid}`).valueChanges();
+        }
         else return of(null);
       })
     );

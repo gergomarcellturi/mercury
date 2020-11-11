@@ -24,7 +24,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IconsModule} from './icons/icons.module';
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {NgxEmojModule} from 'ngx-emoj';
@@ -33,6 +33,10 @@ import {PushNotificationsModule} from 'ng-push-ivy';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -74,11 +78,16 @@ function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatMenuModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
     PickerModule,
     NgxEmojModule,
     EmojiModule,
     PushNotificationsModule,
     NgbModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
