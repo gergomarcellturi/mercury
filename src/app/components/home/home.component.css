@@ -43,6 +43,11 @@
   text-align: right;
 }
 
+.profile-pic-container {
+  display: inline-block;
+  width: 50px;
+}
+
 .message {
   display: inline-block;
   margin: .5em 0 .5em 0;
