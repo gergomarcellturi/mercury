@@ -1,6 +1,18 @@
-<div>
-  <button mat-icon-button class="float-right" (click)="action()">
-    <mat-icon *ngIf="!collapsed">keyboard_arrow_left</mat-icon>
-    <mat-icon *ngIf="collapsed">keyboard_arrow_right</mat-icon>
-  </button>
+<div class="sidebar-container">
+  <div>
+    <button mat-icon-button class="float-right" (click)="action()">
+      <mat-icon *ngIf="!collapsed">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="collapsed">keyboard_arrow_right</mat-icon>
+    </button>
+  </div>
+  <div class="chatlist-container">
+    <div class="chatroom d-flex flex-row" *ngFor="let room of [0, 0, 0, 0, 0, 0]">
+    <span>
+      <mat-icon>person</mat-icon>
+    </span>
+      <span *ngIf="!collapsed">
+      {{chatrooms[0].participants[0]}}
+    </span>
+    </div>
+  </div>
 </div>
