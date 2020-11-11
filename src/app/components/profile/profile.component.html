@@ -1,1 +1,40 @@
 <app-header></app-header>
+<form [formGroup]="profileForm" (ngSubmit)="submit()">
+  <div class="mainDiv" *ngIf="authenticationService.user$ | async as user">
+    <div class="title">
+      {{'PROFILE.TITLE' | translate}}
+    </div>
+
+    <div class="data-container">
+
+      <mat-grid-list [rowHeight]="'80px'" [cols]="2" class="profile-grid-list">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="2" class="pic-tile">
+          <img [src]="user.photoURL" alt="Profile picture"/>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+          <mat-form-field appearance="{{settings.inputAppearance}}">
+            <label>
+              <input [formControlName]="'displayName'" matInput placeholder="{{'PROFILE.DISPLAY_NAME' | translate}}">
+            </label>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="{{settings.inputAppearance}}">
+            <label>
+              <input [formControlName]="'email'" matInput placeholder="{{'PROFILE.EMAIL' | translate}}">
+            </label>
+          </mat-form-field>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </div>
+    <div class="button-container float-right">
+      <button type="button"  (click)="cancel()" class="btn btn-outline-danger">{{'BUTTON.CANCEL' | translate}}</button>
+      <button type="submit" class="btn btn-primary">{{'BUTTON.SAVE' | translate}}</button>
+    </div>
+  </div>
+</form>

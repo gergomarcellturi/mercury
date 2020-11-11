@@ -1,0 +1,25 @@
+
+mat-form-field {
+  width: 90%;
+}
+
+mat-grid-list {
+  min-height: 200px;
+}
+
+.mainDiv {
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.title {
+  text-align: center;
+  font-size: x-large;
+}
+
+.data-container {
+  margin-top: 2rem;
+}
+
+.profile-grid-list {
+}
