@@ -1,16 +1,23 @@
 <div class="sidebar-container">
-  <div>
-    <button mat-icon-button class="float-right" (click)="action()">
+  <div class="d-flex">
+    <div class="menu-container">
+      <mat-icon>search</mat-icon>
+      <mat-icon class="icon" [ngClass]="{'hide': collapsed}">person_add</mat-icon>
+      <mat-icon class="icon" [ngClass]="{'hide': collapsed}">group_add</mat-icon>
+    </div>
+    <div class="button-container">
+    <button mat-icon-button (click)="action()">
       <mat-icon *ngIf="!collapsed">keyboard_arrow_left</mat-icon>
       <mat-icon *ngIf="collapsed">keyboard_arrow_right</mat-icon>
     </button>
+    </div>
   </div>
   <div class="chatlist-container">
     <div class="chatroom d-flex flex-row" *ngFor="let room of [0, 0, 0, 0, 0, 0]">
     <span>
-      <mat-icon>person</mat-icon>
+      <mat-icon class="room-icon" [ngClass]="{'slide-in': collapsed}">person</mat-icon>
     </span>
-      <span *ngIf="!collapsed">
+      <span class="room-name" [ngClass]="{'hide': collapsed}">
       {{chatrooms[0].participants[0]}}
     </span>
     </div>

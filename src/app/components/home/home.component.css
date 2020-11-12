@@ -14,7 +14,7 @@
 }
 
 .active {
-  width: 100px;
+  width: 80px;
 }
 
 .right-side {
@@ -23,7 +23,7 @@
 }
 
 .expanded {
-  width: calc(100% - 100px);
+  width: calc(100% - 80px);
 }
 
 .chat-view {
