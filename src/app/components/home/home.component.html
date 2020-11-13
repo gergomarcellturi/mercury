@@ -11,7 +11,7 @@
           <span class="profile-pic-container">
             <mat-icon *ngIf="showMessageSender(index) && user.uid !== message.uid">person</mat-icon>
           </span>
-          <div class="message" [class.own-message]="user.uid === message.uid">
+          <div class="message" [class.own-message]="user.uid === message.uid" [class.other-message]="user.uid !== message.uid">
             <div class="sender" *ngIf="showMessageSender(index)">
               {{message.from}}
               <span class="timestamp">
