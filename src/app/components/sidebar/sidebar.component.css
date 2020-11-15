@@ -3,6 +3,10 @@
   overflow-x: hidden;
 }
 
+.upper-row {
+  background-color: #e2eafc;
+}
+
 .menu-container {
   white-space: nowrap;
   overflow-x: hidden;

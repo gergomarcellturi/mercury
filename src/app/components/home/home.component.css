@@ -9,7 +9,7 @@
 .sidebar {
   display: block;
   width: 20%;
-  background-color: blueviolet;
+  background-color: #673ab7;
   transition: all 1s;
 }
 
@@ -54,7 +54,7 @@
   padding: .5em;
   border-radius: 10px;
   max-width: 60%;
-  background-color: aqua;
+  background-color: #eddcd2;
 }
 
 .own-message {
@@ -172,7 +172,7 @@ label {
     color: white;
   }
 
-  .other-message {
+  .no-gradiant {
     position: relative;
     z-index: 1;
   }
