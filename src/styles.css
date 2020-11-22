@@ -7,4 +7,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --primary-color: #ee88ee;
   --secondary-color: #aaaaaa;
   --tertiary-color: #ee0000;
+  --chat-background-color: #ee0000;
 }

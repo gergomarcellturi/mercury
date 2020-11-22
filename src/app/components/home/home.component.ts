@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   public showEmojiPicker = false;
   public collapseSidebar = false;
   public chatView = true;
+  public isStylish: boolean;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -45,6 +46,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.themeService.setActiveTheme(this.themeService.getAvailableThemes()[1]);
+    this.themeService.setStyle(true);
+    this.isStylish = this.themeService.getActiveTheme().stylish;
   }
 
   ngAfterViewChecked() {

@@ -11,8 +11,16 @@ export class ThemeService {
 
   constructor() { }
 
+  public getActiveTheme(): Theme {
+    return this.active;
+  }
+
   public getAvailableThemes(): Theme[] {
     return this.availableThemes;
+  }
+
+  public setStyle(isStylish: boolean): void {
+    this.active.stylish = isStylish;
   }
 
   public setActiveTheme(theme: Theme): void {

@@ -5,20 +5,24 @@
   </div>
   <div class="right-side" [ngClass]="{'expanded': collapseSidebar}">
     <div class="chat-view" *ngIf="chatView else notes">
-      <div class="chat-container" *ngIf="authenticationService.user$ | async as user">
+      <div class="chat-container" [ngClass]="{'add-gradient': !isStylish}"
+           *ngIf="authenticationService.user$ | async as user">
         <div class="message-container" *ngFor="let message of messages; index as index; trackBy: trackByUid"
              [class.to-right]="user.uid === message.uid">
           <span class="profile-pic-container">
             <mat-icon *ngIf="showMessageSender(index) && user.uid !== message.uid">person</mat-icon>
           </span>
-          <div class="message" [class.own-message]="user.uid === message.uid" [class.no-gradiant]="user.uid !== message.uid">
-            <div class="sender" *ngIf="showMessageSender(index)">
-              {{message.from}}
-              <span class="timestamp">
+          <div class="message-outer">
+            <div class="message" [ngClass]="{'stylish-message': isStylish}"
+                 [class.own-message]="user.uid === message.uid" [class.no-gradiant]="user.uid !== message.uid">
+              <div class="sender" *ngIf="showMessageSender(index)">
+                {{message.from}}
+                <span class="timestamp">
               {{message.timestamp?.seconds * 1000 | date: 'yyyy.MM.dd HH:mm'}}
             </span>
+              </div>
+              {{message.text}}
             </div>
-            {{message.text}}
           </div>
           <span class="profile-pic-container">
             <mat-icon class="no-gradiant" *ngIf="showMessageSender(index) && user.uid === message.uid">person</mat-icon>

@@ -1,6 +1,7 @@
 export interface Theme {
   name: string;
   properties: any;
+  stylish: boolean;
 }
 
 export const testTheme1: Theme = {
@@ -8,8 +9,10 @@ export const testTheme1: Theme = {
   properties: {
     '--primary-color': '#ee88ee',
     '--secondary-color': '#aaaaaa',
-    '--tertiary-color': '#ee0000'
-  }
+    '--tertiary-color': '#ee0000',
+    '--chat-background-color': '#ee0000',
+  },
+  stylish: false,
 };
 
 export const testTheme2: Theme = {
@@ -17,6 +20,8 @@ export const testTheme2: Theme = {
   properties: {
     '--primary-color': '#cc00cc',
     '--secondary-color': '#aaaaaa',
-    '--tertiary-color': '#ee0000'
-  }
+    '--tertiary-color': '#ee0000',
+    '--chat-background-color': '#ee0000',
+  },
+  stylish: false,
 };
