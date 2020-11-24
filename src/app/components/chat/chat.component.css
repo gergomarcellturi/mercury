@@ -153,3 +153,27 @@ label {
   align-items: center;
   justify-content: center;
 }
+
+@supports (mix-blend-mode: screen) {
+  .chat-container:after {
+    content: '';
+    background: linear-gradient(rgb(255, 143, 178) 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
+    position: absolute;
+    right: 0;
+    top: 50px;
+    height: calc(80% - 40px);
+    width: 70%;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  .own-message {
+    background-color: black;
+    color: white;
+  }
+
+  .no-gradiant {
+    position: relative;
+    z-index: 1;
+  }
+}

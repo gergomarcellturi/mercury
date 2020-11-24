@@ -37,6 +37,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ChatComponent } from './components/chat/chat.component';
+import { FancyChatComponent } from './components/fancy-chat/fancy-chat.component';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -56,7 +58,9 @@ function HttpLoaderFactory(http: HttpClient) {
     NotesComponent,
     AboutComponent,
     PreferencesComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChatComponent,
+    FancyChatComponent
   ],
   imports: [
     BrowserModule,
