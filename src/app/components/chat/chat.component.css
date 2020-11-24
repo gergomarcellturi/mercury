@@ -1,36 +1,4 @@
-.wrapper {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-  min-height: calc(100% - 50px);
-  max-height: calc(100% - 50px);
-}
-
-.sidebar {
-  display: block;
-  width: 20%;
-  background-color: #673ab7;
-  transition: all 1s;
-}
-
-.active {
-  width: 80px;
-}
-
-.right-side {
-  width: 80%;
-  transition: all 1s;;
-}
-
-.expanded {
-  width: calc(100% - 80px);
-}
-
-.chat-view {
-  height: 100%;
-}
-
-.chat-container {;
+.chat-container {
   max-height: 80%;
   overflow-y: scroll;
 }

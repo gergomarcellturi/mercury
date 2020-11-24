@@ -23,8 +23,8 @@ export class ThemeService {
     this.active.stylish = isStylish;
   }
 
-  public setActiveTheme(theme: Theme): void {
-    this.active = theme;
+  public setColorTheme(properties: any): void {
+    this.active.properties = properties;
 
     Object.keys(this.active.properties).forEach(property => {
       document.documentElement.style.setProperty(property, this.active.properties[property]);

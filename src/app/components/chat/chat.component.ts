@@ -2,11 +2,8 @@ import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angul
 import {Observable} from 'rxjs';
 import {User} from '../../api/interfaces/User';
 import {AuthenticationService} from '../../api/services/misc/authentication.service';
-import {TranslateService} from '@ngx-translate/core';
 import {ChatService} from '../../api/services/communication/chat.service';
 import {PushNotificationsService} from 'ng-push-ivy';
-import {ThemeService} from '../../api/services/misc/theme.service';
-import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-chat',
@@ -25,18 +22,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   public messages: {text: string, uid: string, from: string, timestamp: {seconds: number, nanoseconds: number}}[];
   private messagesLength = -1;
   public showEmojiPicker = false;
-  public collapseSidebar = false;
   public chatView = true;
   public isStylish: boolean;
 
   constructor(
     public authenticationService: AuthenticationService,
-    private translate: TranslateService,
     public chatService: ChatService,
     private pushNotification: PushNotificationsService,
-    private themeService: ThemeService,
   ) {
-    translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
       this.notify(this.messages[this.messages.length - 1]);
@@ -44,11 +37,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.pushNotification.requestPermission();
   }
 
-  ngOnInit(): void {
-    this.themeService.setActiveTheme(this.themeService.getAvailableThemes()[1]);
-    this.themeService.setStyle(true);
-    this.isStylish = this.themeService.getActiveTheme().stylish;
-  }
+  ngOnInit(): void { }
 
   ngAfterViewChecked() {
     if (this.messages && this.chatView) {
