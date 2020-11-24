@@ -22,4 +22,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/home']).then();
   }
 
+  public goTo = (path: string): void => {
+    this.router.navigate([path]).then();
+  }
+
 }
