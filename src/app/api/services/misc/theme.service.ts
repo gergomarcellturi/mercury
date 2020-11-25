@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {testTheme1, testTheme2, Theme} from '../../interfaces/theme';
+import {Theme} from '../../interfaces/Theme';
+import {ColorTheme, testTheme1, testTheme2} from '../../interfaces/ColorTheme';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
-  private active: Theme = testTheme1;
-  private availableThemes: Theme[] = [testTheme1, testTheme2];
+  private active: Theme = {color: testTheme1, stylish: true};
+  private colorThemes: ColorTheme[] = [testTheme1, testTheme2];
 
   constructor() { }
 
@@ -15,19 +16,19 @@ export class ThemeService {
     return this.active;
   }
 
-  public getAvailableThemes(): Theme[] {
-    return this.availableThemes;
+  public getColorThemes(): ColorTheme[] {
+    return this.colorThemes;
   }
 
   public setStyle(isStylish: boolean): void {
     this.active.stylish = isStylish;
   }
 
-  public setColorTheme(properties: any): void {
-    this.active.properties = properties;
+  public setColorTheme(colorTheme: ColorTheme): void {
+    this.active.color = colorTheme;
 
-    Object.keys(this.active.properties).forEach(property => {
-      document.documentElement.style.setProperty(property, this.active.properties[property]);
+    Object.keys(this.active.color.properties).forEach(property => {
+      document.documentElement.style.setProperty(property, this.active.color.properties[property]);
     });
   }
 }
