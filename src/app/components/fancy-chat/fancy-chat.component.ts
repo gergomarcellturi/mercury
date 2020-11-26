@@ -60,6 +60,12 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
     return index > 0 ? this.messages[index].uid !== this.messages[index - 1].uid : true;
   }
 
+  public onKeydown(event: any): void {
+    if (event.keyCode === 13) {
+      this.sendMessage();
+    }
+  }
+
   public trackByUid(index, item) {
     return item.uid;
   }

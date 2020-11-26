@@ -5,9 +5,9 @@
           <span class="profile-pic-container">
             <mat-icon *ngIf="showMessageSender(index) && user.uid !== message.uid">person</mat-icon>
           </span>
-    <div class="message-outer">
-      <div class="message stylish-message"
-           [class.own-message]="user.uid === message.uid" [class.no-gradiant]="user.uid !== message.uid">
+    <div class="message-outer" [class.black-outer]="user.uid === message.uid">
+      <div class="message"
+           [class.own-message]="user.uid === message.uid">
         <div class="sender" *ngIf="showMessageSender(index)">
           {{message.from}}
           <span class="timestamp">
@@ -22,10 +22,12 @@
           </span>
   </div>
   <div class="scrollRef" #scrollRef></div>
+
+  <div class="inputbox-container">
+    <textarea class="input" cols="60" rows="3" (keydown)="onKeydown($event)" [(ngModel)]="text"></textarea>
+  </div>
 </div>
-
-
-<footer class="chat-footer">
+<!--
   <emoji-mart class="emoji-mart" (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker"
               title="Pick your emoji…"></emoji-mart>
   <form (ngSubmit)='sendMessage()'>
@@ -35,6 +37,5 @@
       (click)="toggleEmojiPicker()">
       <i-feather name="smile"></i-feather>
     </button>
-    <input placeholder="Type some shit and hit enter to send" type="text" name="message" [(ngModel)]="text">
   </form>
-</footer>
+-->
