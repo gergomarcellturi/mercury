@@ -1,41 +1,43 @@
 <div class="chat-container"
      *ngIf="authenticationService.user$ | async as user">
-  <div class="message-container" *ngFor="let message of messages; index as index; trackBy: trackByUid"
+  <div class="message-container d-flex flex-row" *ngFor="let message of messages; index as index; trackBy: trackByUid"
        [class.to-right]="user.uid === message.uid">
-          <span class="profile-pic-container">
-            <mat-icon *ngIf="showMessageSender(index) && user.uid !== message.uid">person</mat-icon>
-          </span>
-    <div class="message-outer" [class.black-outer]="user.uid === message.uid">
-      <div class="message"
-           [class.own-message]="user.uid === message.uid">
-        <div class="sender" *ngIf="showMessageSender(index)">
-          {{message.from}}
-          <span class="timestamp">
-              {{message.timestamp?.seconds * 1000 | date: 'yyyy.MM.dd HH:mm'}}
-            </span>
-        </div>
-        {{message.text}}
+    <div class="align-self-end" [class.black-outer]="showMessageSender(index) && user.uid !== message.uid">
+      <div class="profile-pic-container"
+            [class.white-background]="showMessageSender(index) && user.uid !== message.uid">
+        <mat-icon *ngIf="showMessageSender(index) && user.uid !== message.uid">person</mat-icon>
       </div>
     </div>
-    <span class="profile-pic-container">
-            <mat-icon class="no-gradiant" *ngIf="showMessageSender(index) && user.uid === message.uid">person</mat-icon>
-          </span>
+    <div class="content">
+      <div class="b-outer" *ngIf="showMessageSender(index) && user.uid !== message.uid">
+        <div class="from">
+          {{message.from}}
+        </div>
+      </div>
+      <div class="b-outer2" *ngIf="showMessageSender(index) && user.uid !== message.uid">
+        <div class="timestamp">
+          {{message.timestamp?.seconds * 1000 | date: 'yyyy.MM.dd HH:mm'}}
+        </div>
+      </div>
+      <div class="message-outer" [class.own-black-outer]="user.uid === message.uid">
+        <div class="message" [class.own-message]="user.uid === message.uid">
+          {{message.text}}
+        </div>
+      </div>
+    </div>
   </div>
   <div class="scrollRef" #scrollRef></div>
 
+  <emoji-mart class="emoji-mart" (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker"
+              title="Pick your emoji…"></emoji-mart>
+
+  <div class="emoji-container">
+    <div class="emoji-button"
+         (click)="toggleEmojiPicker()">
+      <i-feather name="smile"></i-feather>
+    </div>
+  </div>
   <div class="inputbox-container">
     <textarea class="input" cols="60" rows="3" (keydown)="onKeydown($event)" [(ngModel)]="text"></textarea>
   </div>
 </div>
-<!--
-  <emoji-mart class="emoji-mart" (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker"
-              title="Pick your emoji…"></emoji-mart>
-  <form (ngSubmit)='sendMessage()'>
-    <button
-      type="button"
-      class="toggle-emoji"
-      (click)="toggleEmojiPicker()">
-      <i-feather name="smile"></i-feather>
-    </button>
-  </form>
--->

@@ -15,7 +15,22 @@
 
 .profile-pic-container {
   display: inline-block;
-  width: 50px;
+  width:40px;
+}
+
+.black-outer {
+  padding: 3px;
+  background-color: black;
+  clip-path: polygon(0% 90%, 92% 95%, 100% 10%, 5% 20%);
+  transform: rotateZ(-5deg);
+}
+
+.white-background {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background-color: white;
+  clip-path: polygon(0% 90%, 92% 95%, 100% 10%, 5% 20%);
 }
 
 .message-outer {
@@ -37,7 +52,7 @@
   clip-path: polygon(0% 100%, 95% 100%, 100% 0%, 5% 10%);
 }
 
-.black-outer {
+.own-black-outer {
   background-color: black;
 }
 
@@ -46,15 +61,72 @@
   background-color: white;
 }
 
+.content {
+  width: 100%;
+}
+
+.b-outer {
+  padding: 3px;
+  background-color: black;
+  transform: translateY(15px) rotateZ(-8deg);
+  width: 160px;
+  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+  position: relative;
+  z-index: 100;
+}
+
+.b-outer2 {
+  padding: 2px;
+  background-color: black;
+  transform: translateY(15px) rotateZ(-5deg);
+  width: 130px;
+  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+  position: relative;
+  z-index: 100;
+}
+
+.from {
+  width: 150px;
+  background-color: white;
+  color: black;
+  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+  padding: 5px;
+}
+
 .timestamp {
-  margin: 1em;
-  color: darkgrey;
-  font-size: 10px;
-  font-style: italic;
+  background-color: white;
+  width: 120px;
+  margin: 5px;
+  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
 }
 
 .scrollRef {
   height: 120px;
+}
+
+emoji-mart {
+  position: absolute;
+  bottom: 150px;
+  right: 10px;
+}
+
+.emoji-container {
+  position: absolute;
+  bottom: 50px;
+  left: calc(50% - 160px);
+  background-color: white;
+  padding: 4px;
+  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+}
+
+.emoji-button {
+  background-color: black;
+  color: white;
+  width: 34px;
+  height: 34px;
+  padding: 5px;
+  text-align: center;
+  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
 }
 
 .inputbox-container {
