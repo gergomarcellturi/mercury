@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   @Input() chatView: boolean;
+  @Input() isStylish: boolean;
   @Output() chatViewChange: EventEmitter<boolean> = new EventEmitter();
 
   constructor(

@@ -1,18 +1,24 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" [ngClass]="{'stylish-toolbar': isStylish}">
   <div class="header-container">
     <span class="left">
-      <button mat-icon-button (click)="action(true)">
-        <mat-icon>chat_bubble_outline</mat-icon>
-      </button>
-      <button mat-icon-button (click)="action(false)">
-        <mat-icon>notes</mat-icon>
-      </button>
+      <span [ngClass]="{'button-container': isStylish}">
+        <button mat-icon-button (click)="action(true)">
+          <mat-icon>chat_bubble_outline</mat-icon>
+        </button>
+      </span>
+      <span [ngClass]="{'button-container': isStylish}">
+        <button mat-icon-button (click)="action(false)">
+          <mat-icon>notes</mat-icon>
+        </button>
+      </span>
     </span>
 
     <span class="right">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
+      <span [ngClass]="{'button-container': isStylish}">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </span>
     </span>
   </div>
 </mat-toolbar>

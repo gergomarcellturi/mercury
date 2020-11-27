@@ -2,6 +2,10 @@ mat-toolbar {
   height: 50px;
 }
 
+.stylish-toolbar {
+  background: black;
+}
+
 .header-container {
   width: 95%;
   margin: 0 auto 0 auto;
@@ -15,8 +19,16 @@ mat-toolbar {
   float: right;
 }
 
+.button-container {
+  background-color: white;
+  margin-left: 1em;
+  padding: 5px;
+  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+}
+
 mat-icon {
   margin-left: .3em;
+  color: black;
 }
 
 .button {
