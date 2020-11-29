@@ -1,7 +1,7 @@
 <app-header [(chatView)]="chatView" [isStylish]="isStylish"></app-header>
 <div class="wrapper">
-  <div class="sidebar" [ngClass]="{'active': collapseSidebar}">
-    <app-sidebar [(collapsed)]="collapseSidebar"></app-sidebar>
+  <div class="sidebar" [ngClass]="{'active': collapseSidebar, 'stylish-sidebar': isStylish}">
+    <app-sidebar [(collapsed)]="collapseSidebar" [isStylish]="isStylish"></app-sidebar>
   </div>
   <div class="right-side" [ngClass]="{'expanded': collapseSidebar}">
     <div class="chat-view" *ngIf="chatView else notes">

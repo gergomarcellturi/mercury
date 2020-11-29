@@ -3,8 +3,16 @@
   overflow-x: hidden;
 }
 
+.stylish-sidebar {
+  background-color: black;
+}
+
 .upper-row {
   background-color: #e2eafc;
+}
+
+.stylish-row {
+  background-color: white;
 }
 
 .menu-container {
@@ -29,6 +37,12 @@
 .chatroom {
   height: 50px;
   transition: all 1s;
+}
+
+.stylish-room {
+  overflow: hidden;
+  -webkit-text-stroke: 1px white;
+  color: black;
 }
 
 .chatroom:hover {

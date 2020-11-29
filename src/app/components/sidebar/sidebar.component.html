@@ -1,5 +1,5 @@
-<div class="sidebar-container">
-  <div class="d-flex upper-row">
+<div class="sidebar-container" [ngClass]="{'stylish-sidebar': isStylish}">
+  <div class="d-flex upper-row" [ngClass]="{'stylish-row': isStylish}">
     <div class="menu-container">
       <mat-icon>search</mat-icon>
       <mat-icon class="icon" [ngClass]="{'hide': collapsed}">person_add</mat-icon>
@@ -13,13 +13,13 @@
     </div>
   </div>
   <div class="chatlist-container">
-    <div class="chatroom d-flex flex-row" *ngFor="let room of chatrooms">
-    <span>
-      <mat-icon class="room-icon" [ngClass]="{'slide-in': collapsed}">person</mat-icon>
-    </span>
+    <div class="chatroom d-flex flex-row" [ngClass]="{'stylish-room': isStylish}" *ngFor="let room of chatrooms">
+      <span>
+        <mat-icon class="room-icon" [ngClass]="{'slide-in': collapsed}">person</mat-icon>
+      </span>
       <span class="room-name" [ngClass]="{'hide': collapsed}">
-      {{room.participants[0]}}
-    </span>
+        {{room.participants[0]}}
+      </span>
     </div>
   </div>
 </div>

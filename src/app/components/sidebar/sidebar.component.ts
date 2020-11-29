@@ -9,6 +9,7 @@ import {ChatService} from '../../api/services/communication/chat.service';
 export class SidebarComponent implements OnInit {
 
   @Input() collapsed: boolean;
+  @Input() isStylish: boolean;
   @Output() collapsedChange: EventEmitter<boolean> = new EventEmitter();
 
   public chatrooms: any[];
