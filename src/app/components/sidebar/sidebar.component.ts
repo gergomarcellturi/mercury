@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ChatService} from '../../api/services/communication/chat.service';
+import {ChatRoom} from '../../api/interfaces/ChatRoom';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
   @Input() isStylish: boolean;
   @Output() collapsedChange: EventEmitter<boolean> = new EventEmitter();
 
-  public chatrooms: any[];
+  public chatrooms: ChatRoom[];
 
   constructor(
     public chatService: ChatService,

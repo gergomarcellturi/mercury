@@ -4,6 +4,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import * as firebase from 'firebase';
+import {ChatRoom} from '../../interfaces/ChatRoom';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,10 @@ export class ChatService {
   /**
    * Visszaadja a bejelentkezett felhasználóhoz tartozó chat-beszélgetéseket
    */
-  public getChatLists =  (): Observable<any> => {
+  public getChatLists =  (): Observable<ChatRoom[]> => {
     return this.authenticationService.user$.pipe(
       switchMap(user => {
-        return this.fireStore.collection('chat', ref => ref.where('participants', 'array-contains', user.uid)).valueChanges();
+        return this.fireStore.collection<ChatRoom>('chat', ref => ref.where('participants', 'array-contains', user.uid)).valueChanges();
     })
     );
   }
