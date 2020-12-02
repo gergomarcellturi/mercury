@@ -1,6 +1,6 @@
 <div class="notes-container" [ngClass]="{'stylish-bg': isStylish}">
   <mat-grid-list cols="8" rowHeight="150px">
-    <mat-grid-tile>
+    <mat-grid-tile (click)="openNote(null)">
       <div [ngClass]="{'card-container': isStylish}">
         <div class="note-card">
           <div class="note-content">
@@ -9,11 +9,11 @@
         </div>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile *ngFor="let somthing of [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]">
+    <mat-grid-tile *ngFor="let note of noteList" (click)="openNote(note)">
       <div [ngClass]="{'card-container': isStylish}">
         <div class="note-card">
           <div class="note-content">
-            <mat-icon class="note-icon">notes</mat-icon>
+            {{note.noteTitle}}
           </div>
         </div>
       </div>

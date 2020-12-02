@@ -39,6 +39,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ChatComponent } from './components/chat/chat.component';
 import { FancyChatComponent } from './components/fancy-chat/fancy-chat.component';
+import { NoteDialogComponent } from './components/notes/dialogs/note-dialog/note-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -60,7 +62,8 @@ function HttpLoaderFactory(http: HttpClient) {
     PreferencesComponent,
     ProfileComponent,
     ChatComponent,
-    FancyChatComponent
+    FancyChatComponent,
+    NoteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,7 @@ function HttpLoaderFactory(http: HttpClient) {
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     MatSnackBarModule,
     PickerModule,
     NgxEmojModule,

@@ -1,0 +1,21 @@
+
+<div class="dialog-window">
+  <div mat-dialog-title>
+    <mat-form-field>
+      <input matInput placeholder="Note Title" [(ngModel)]="note.noteTitle">
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <mat-label>Note Text</mat-label>
+      <textarea matInput placeholder="" [(ngModel)]="note.noteText"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="closeDialog(null)">Cancel</button>
+    <button mat-raised-button (click)="closeDialog(note)">{{note === null ? 'Save' : 'Modify'}}</button>
+  </div>
+
+</div>

@@ -26,6 +26,8 @@
 
 .note-content {
   align-self: center;
+  color: white;
+  font-weight: bold;
 }
 
 .note-icon {
