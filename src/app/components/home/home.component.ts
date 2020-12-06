@@ -30,8 +30,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.themeService.setColorTheme(this.themeService.getColorThemes()[1]);
-    this.themeService.setStyle(true);
+    this.themeService.setColorTheme(this.themeService.getColorThemes()[0]);
+    this.themeService.setStyle(false);
     this.isStylish = this.themeService.getActiveTheme().stylish;
   }
 

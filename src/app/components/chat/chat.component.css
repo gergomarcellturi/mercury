@@ -22,11 +22,8 @@
   padding: .5em;
   border-radius: 10px;
   max-width: 60%;
+  word-break: break-all;
   background-color: #eddcd2;
-}
-
-.own-message {
-  background-color: var(--primary-color);
 }
 
 .timestamp {
@@ -125,7 +122,7 @@ label {
 @supports (mix-blend-mode: screen) {
   .chat-container:after {
     content: '';
-    background: linear-gradient(rgb(255, 143, 178) 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
+    background: linear-gradient(var(--gradient-1) 0%, var(--gradient-2) 50%, var(--gradient-3) 100%);
     position: absolute;
     right: 0;
     top: 50px;

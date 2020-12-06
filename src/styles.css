@@ -4,8 +4,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 :root {
-  --primary-color: #ee88ee;
-  --secondary-color: #aaaaaa;
-  --tertiary-color: #ee0000;
-  --chat-background-color: #ee0000;
+  --gradient-1: rgb(255, 143, 178);
+  --gradient-2: rgb(167, 151, 255);
+  --gradient-3: rgb(0, 229, 255);
+  --fancy-background-color: #ee0000;
 }
