@@ -16,23 +16,19 @@ export class HomeComponent implements OnInit {
   public toggled = false;
   public collapseSidebar = false;
   public chatView = true;
-  public isStylish: boolean;
 
   constructor(
     public authenticationService: AuthenticationService,
     private translate: TranslateService,
     public chatService: ChatService,
     private pushNotification: PushNotificationsService,
-    private themeService: ThemeService,
+    public themeService: ThemeService,
     ) {
     translate.use(environment.defaultLang);
     this.pushNotification.requestPermission();
   }
 
   ngOnInit(): void {
-    this.themeService.setColorTheme(this.themeService.getColorThemes()[0]);
-    this.themeService.setStyle(true);
-    this.isStylish = this.themeService.getActiveTheme().stylish;
   }
 
 }

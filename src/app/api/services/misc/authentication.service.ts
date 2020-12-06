@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
 import {User} from '../../interfaces/User';
 import {switchMap} from 'rxjs/operators';
 import {auth} from 'firebase';
 import {PreferenceSettings} from '../../interfaces/PreferenceSettings';
+import {ThemeService} from './theme.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class AuthenticationService {
     private fireAuth: AngularFireAuth,
     private fireStore: AngularFirestore,
     private router: Router,
+    private themeService: ThemeService,
   ) {
     this.user$ = this.fireAuth.authState.pipe(
       switchMap(user => {
@@ -30,7 +32,22 @@ export class AuthenticationService {
             'settings',
             ref => ref.where('userUid', '==', user.uid),
           ).valueChanges();
-          this.settings$.subscribe(result => result[0] = this.settings);
+          this.settings$.subscribe(result => {
+            this.settings = result[0];
+            console.log(result);
+            if (this.settings.theme) {
+              console.log('color set');
+              this.themeService.setColorTheme(
+                this.themeService.getColorThemes().find(theme => theme.name === this.settings.theme));
+            } else {
+              this.themeService.setColorTheme(this.themeService.getColorThemes()[0]);
+            }
+            if (this.settings.stylish) {
+              this.themeService.setStyle(this.settings.stylish);
+            } else {
+              this.themeService.setStyle(false);
+            }
+          });
           this.fireStore.doc<User>(`users/${user.uid}`).valueChanges().subscribe(result => this.user = result);
           return this.fireStore.doc<User>(`users/${user.uid}`).valueChanges();
         }
@@ -52,12 +69,12 @@ export class AuthenticationService {
 
   private updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.fireStore.doc(`users/${user.uid}`);
-    const data = {
+    const userData = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
     };
-    return userRef.set(data, {merge: true});
+    return userRef.set(userData, {merge: true});
   }
 }

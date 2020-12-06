@@ -15,29 +15,14 @@ import {Message} from './api/interfaces/Message';
 export class AppComponent implements OnInit {
   title = 'mega-chad';
 
-  public chat: Observable<User[]>;
-  public users: Observable<User[]>;
-  public text: string;
-  public messages: Message[];
-
   constructor(
     public authenticationService: AuthenticationService,
     private translate: TranslateService,
     public chatService: ChatService,
   ) {
     translate.use(environment.defaultLang);
-    this.chatService.getChatLists().subscribe(response => {
-      this.messages = response[0].messages;
-    });
   }
 
   async ngOnInit() {
-  }
-
-  public sendMessage = (): void => {
-    if (!this.text) return;
-
-    this.chatService.sendMessage(this.text, '1uFaAU4p6ElQ3vEIkuAA');
-    this.text = '';
   }
 }
