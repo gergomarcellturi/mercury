@@ -7,6 +7,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
+import {ThemeService} from '../../api/services/misc/theme.service';
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +24,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     public authenticationService: AuthenticationService,
+    public themeService: ThemeService,
     private formBuilder: FormBuilder,
     private fireStore: AngularFirestore,
     private snackBar: MatSnackBar,

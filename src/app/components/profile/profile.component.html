@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [isStylish]="this.themeService.getActiveTheme().stylish"></app-header>
 <form [formGroup]="profileForm" (ngSubmit)="submit()">
   <div class="mainDiv" *ngIf="authenticationService.user$ | async as user">
     <div class="title">
