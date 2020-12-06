@@ -43,6 +43,13 @@
   overflow: hidden;
   -webkit-text-stroke: 1px white;
   color: black;
+  animation: room-anim 1s infinite;
+}
+
+@keyframes room-anim {
+  0% {clip-path: polygon(0% 95%, 94% 100%, 98% 0%, 0% 0%);}
+  50% {clip-path: polygon(0% 99%, 98% 95%, 100% 4%, 5% 7%);}
+  100% {clip-path: polygon(0% 95%, 94% 100%, 98% 0%, 0% 0%);}
 }
 
 .chatroom:hover {

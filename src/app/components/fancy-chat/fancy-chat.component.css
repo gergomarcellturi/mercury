@@ -116,7 +116,13 @@ emoji-mart {
   left: calc(50% - 160px);
   background-color: white;
   padding: 4px;
-  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+  animation: emoji-outer 2s infinite;
+}
+
+@keyframes emoji-outer {
+  0% {clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 10% 5%);}
+  50% {clip-path: polygon(2% 98%, 100% 79%, 97% 3%, 3% 10%);}
+  100% {clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 10% 5%);}
 }
 
 .emoji-button {
@@ -126,16 +132,28 @@ emoji-mart {
   height: 34px;
   padding: 5px;
   text-align: center;
-  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+  animation: emoji-inner 2s infinite;
+}
+
+@keyframes emoji-inner {
+  0% {clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%)}
+  50% {clip-path: polygon(2% 99%, 95% 74%, 97% 5%, 3% 10%);}
+  100% {clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%)}
 }
 
 .inputbox-container {
   background-color: white;
-  padding: 10px;
-  clip-path: polygon(0% 90%, 98% 94%, 100% 0%, 3% 5%);
+  padding: 15px;
   position: absolute;
   bottom: 0;
   left: calc(50% - 122px);
+  animation: outer-anim 2s infinite;
+}
+
+@keyframes outer-anim {
+  0% {clip-path: polygon(1% 82%, 95% 85%, 98% 5%, 5% 5%);}
+  50% {clip-path: polygon(2% 75%, 99% 79%, 97% 3%, 3% 10%);}
+  100% {clip-path: polygon(1% 82%, 95% 85%, 98% 5%, 5% 5%);}
 }
 
 .input {
@@ -145,8 +163,14 @@ emoji-mart {
   background-color: black;
   border-radius: 0;
   padding: 10px;
-  clip-path: polygon(0% 100%, 98% 100%, 100% 0%, 2% 4%);
   overflow: hidden;
+  animation: inner-anim 2s infinite;
+}
+
+@keyframes inner-anim {
+  0% {clip-path: polygon(0% 100%, 98% 100%, 100% 0%, 2% 4%);}
+  50% {clip-path: polygon(0% 99%, 99% 100%, 99% 2%, 0% 2%);}
+  100% {clip-path: polygon(0% 100%, 98% 100%, 100% 0%, 2% 4%);}
 }
 
 ::-webkit-scrollbar {
