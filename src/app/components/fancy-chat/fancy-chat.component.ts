@@ -4,6 +4,7 @@ import {User} from '../../api/interfaces/User';
 import {AuthenticationService} from '../../api/services/misc/authentication.service';
 import {ChatService} from '../../api/services/communication/chat.service';
 import {PushNotificationsService} from 'ng-push-ivy';
+import {Message} from '../../api/interfaces/Message';
 
 @Component({
   selector: 'app-fancy-chat',
@@ -18,7 +19,7 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
   public chat: Observable<User[]>;
   public users: Observable<User[]>;
   public text = '';
-  public messages: {text: string, uid: string, from: string, timestamp: {seconds: number, nanoseconds: number}}[];
+  public messages: Message[];
   private messagesLength = -1;
   public showEmojiPicker = false;
   public chatView = true;
@@ -30,6 +31,7 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
   ) {
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
+      console.log(this.messages[3]);
       this.notify(this.messages[this.messages.length - 1]);
     });
     this.pushNotification.requestPermission();
@@ -57,7 +59,7 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
   }
 
   public showMessageSender(index: number): boolean {
-    return index > 0 ? this.messages[index].uid !== this.messages[index - 1].uid : true;
+    return index > 0 ? this.messages[index].from !== this.messages[index - 1].from : true;
   }
 
   public onKeydown(event: any): void {
@@ -80,9 +82,9 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
     this.showEmojiPicker = false;
   }
 
-  private notify({uid, from, text}) {
+  private notify({from, text}) {
     this.authenticationService.user$.subscribe(user => {
-      if (user.uid === uid || document.hasFocus()) {
+      if (user.uid === from || document.hasFocus()) {
         return;
       }
       this.pushNotification.create(from, {body: text}).subscribe(
