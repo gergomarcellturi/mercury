@@ -40,7 +40,7 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     if (this.messages && this.chatView) {
-      const chatElements = document.getElementsByClassName('chat-container').item(0);
+      const chatElements = document.getElementsByClassName('chat').item(0);
       const scrollDownPerc = chatElements.scrollTop / chatElements.scrollHeight;
       if (this.messages.length !== this.messagesLength && scrollDownPerc > .8) {
         this.messagesLength = this.messages.length;
@@ -62,7 +62,12 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
   }
 
   public onKeydown(event: any): void {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && event.ctrlKey) {
+      this.text += '\n';
+      console.log(this.text);
+      return;
+    }
+    if (event.keyCode === 13 && this.text !== '') {
       this.sendMessage();
     }
   }
@@ -83,7 +88,7 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
 
   private notify({from, text}) {
     this.authenticationService.user$.subscribe(user => {
-      if (user.uid === from || document.hasFocus()) {
+      if (user.displayName === from || document.hasFocus()) {
         return;
       }
       this.pushNotification.create(from, {body: text}).subscribe(

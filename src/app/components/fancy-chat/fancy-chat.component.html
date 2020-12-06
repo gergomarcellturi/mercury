@@ -1,4 +1,4 @@
-<div class="chat-container"
+<div class="chat-container chat"
      *ngIf="authenticationService.user$ | async as user">
   <div class="message-container d-flex flex-row" *ngFor="let message of messages; index as index; trackBy: trackByUid"
        [class.to-right]="user.uid === message.uid">
@@ -38,6 +38,8 @@
     </div>
   </div>
   <div class="inputbox-container">
-    <textarea class="input" cols="60" rows="3" (keydown)="onKeydown($event)" [(ngModel)]="text"></textarea>
+    <label>
+      <textarea class="input" cols="60" rows="3" (keydown)="onKeydown($event)" [(ngModel)]="text"></textarea>
+    </label>
   </div>
 </div>

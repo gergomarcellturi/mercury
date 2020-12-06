@@ -35,30 +35,33 @@
 
 .message-outer {
   display: inline-block;
-  padding: .5em;
+  padding: 8px;
   max-width: 60%;
   background-color: white;
-  clip-path: polygon(0% 90%, 92% 95%, 100% 10%, 5% 20%);
+  clip-path: polygon(3px calc(100% - 13px), calc(100% - 10px) calc(100% - 7px), calc(100% - 3px) 10px, 10px 15px);
 }
 
 .message {
   display: inline-block;
   margin: .5em 0 .5em 0;
-  padding: .5em;
+  padding: 7px;
   max-width: 100%;
   word-break: break-all;
   color: white;
   background-color: black;
-  clip-path: polygon(0% 100%, 95% 100%, 100% 0%, 5% 10%);
+  clip-path: polygon(3px calc(100% - 5px), calc(100% - 5px) calc(100% - 1px), calc(100% - 1px) 3px, 3px 8px);
+  white-space: pre-line;
 }
 
 .own-black-outer {
   background-color: black;
+  clip-path: polygon(10px calc(100% - 7px), calc(100% - 3px) calc(100% - 13px), calc(100% - 10px) 15px, 3px 10px);
 }
 
 .own-message {
   color: black;
   background-color: white;
+  clip-path: polygon(5px calc(100% - 1px), calc(100% - 3px) calc(100% - 5px), calc(100% - 3px) 8px, 1px 3px);
 }
 
 .content {
@@ -151,9 +154,9 @@ emoji-mart {
 }
 
 @keyframes outer-anim {
-  0% {clip-path: polygon(1% 82%, 95% 85%, 98% 5%, 5% 5%);}
+  0% {clip-path: polygon(1% 82%, 95% 75%, 98% 5%, 5% 5%);}
   50% {clip-path: polygon(2% 75%, 99% 79%, 97% 3%, 3% 10%);}
-  100% {clip-path: polygon(1% 82%, 95% 85%, 98% 5%, 5% 5%);}
+  100% {clip-path: polygon(1% 82%, 95% 75%, 98% 5%, 5% 5%);}
 }
 
 .input {
