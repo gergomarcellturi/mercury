@@ -41,6 +41,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { FancyChatComponent } from './components/fancy-chat/fancy-chat.component';
 import { NoteDialogComponent } from './components/notes/dialogs/note-dialog/note-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/translations/', '.json');
@@ -96,6 +98,8 @@ function HttpLoaderFactory(http: HttpClient) {
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

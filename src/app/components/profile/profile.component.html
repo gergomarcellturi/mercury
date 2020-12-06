@@ -9,7 +9,7 @@
 
       <mat-grid-list [rowHeight]="'80px'" [cols]="2" class="profile-grid-list">
 
-        <mat-grid-tile [colspan]="1" [rowspan]="2" class="pic-tile">
+        <mat-grid-tile [colspan]="1" [rowspan]="4" class="pic-tile">
           <img [src]="user.photoURL" alt="Profile picture"/>
         </mat-grid-tile>
 
@@ -28,6 +28,30 @@
               <input [formControlName]="'email'" matInput placeholder="{{'PROFILE.EMAIL' | translate}}">
             </label>
           </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>
+              Theme
+            </mat-label>
+            <mat-select [formControlName]="'theme'" (selectionChange)="themeChange()">
+              <mat-option [value]="'red'">
+                Red
+              </mat-option>
+              <mat-option [value]="'blue'">
+                Blue
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-checkbox [formControlName]="'stylish'" (change)="themeChange()">Styling</mat-checkbox>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
         </mat-grid-tile>
 
       </mat-grid-list>

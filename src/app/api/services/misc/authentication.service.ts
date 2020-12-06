@@ -34,9 +34,7 @@ export class AuthenticationService {
           ).valueChanges();
           this.settings$.subscribe(result => {
             this.settings = result[0];
-            console.log(result);
             if (this.settings.theme) {
-              console.log('color set');
               this.themeService.setColorTheme(
                 this.themeService.getColorThemes().find(theme => theme.name === this.settings.theme));
             } else {
@@ -65,6 +63,25 @@ export class AuthenticationService {
   public signOut = async (): Promise<boolean> => {
     await this.fireAuth.signOut();
     return this.router.navigate(['/login']);
+  }
+
+  public saveTheme = (preferenceSettings: PreferenceSettings ): void => {
+    this.getTheme().subscribe(settings => {
+      const setting: firebase.firestore.DocumentData = settings.docs[0];
+      const newSetting = {} as PreferenceSettings;
+      Object.keys(setting.data()).forEach(key => {
+        newSetting[key] = setting.data()[key];
+      });
+      newSetting.stylish = preferenceSettings.stylish;
+      newSetting.theme = preferenceSettings.theme;
+      setting.ref.set(newSetting, {merge: true}).then();
+    });
+  }
+
+  public getTheme = (): Observable<firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>> => {
+    return this.fireStore.collection<PreferenceSettings>(
+      'settings',
+      ref => ref.where('userUid', '==', this.user.uid)).get();
   }
 
   private updateUserData(user: User) {

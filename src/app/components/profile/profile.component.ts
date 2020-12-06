@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
 
   public get displayName(): AbstractControl { return this.profileForm.get('displayName'); }
   public get email(): AbstractControl { return this.profileForm.get('email'); }
+  public get theme(): AbstractControl { return this.profileForm.get('theme'); }
+  public get stylish(): AbstractControl { return this.profileForm.get('stylish'); }
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -36,6 +38,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.themeService.getActiveTheme());
   }
 
   public submit = (): void => {
@@ -48,6 +51,10 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['home']).then();
   }
 
+  public themeChange = (): void => {
+    this.authenticationService.saveTheme({theme: this.theme.value, stylish: this.stylish.value} as PreferenceSettings);
+  }
+
   private buildForm = (): void => {
     this.profileForm = this.formBuilder.group({
       displayName: [this.authenticationService.user.displayName, [
@@ -55,7 +62,11 @@ export class ProfileComponent implements OnInit {
       ]],
       email: [{value: this.authenticationService.user.email, disabled: this.authenticationService.user.userType === 'third-party'}, [
         Validators.required,
-      ]]
+      ]],
+      theme: [this.themeService.getActiveTheme().color.name, [
+        Validators.required,
+      ]],
+      stylish: [this.themeService.getActiveTheme().stylish],
     });
   }
 
