@@ -13,7 +13,7 @@ export class NotesComponent implements OnInit {
 
   @Input() isStylish: boolean;
 
-  public noteList: Note[];
+  public noteList: Note[] = [];
 
   constructor(
     public noteService: NoteService,
@@ -25,18 +25,28 @@ export class NotesComponent implements OnInit {
   }
 
   public openNote = (note: Note) => {
-    this.dialog.open(NoteDialogComponent, {data: note}).afterClosed().subscribe(result => {
-      if (result && !note) {
-        this.noteService.saveNote(note);
+    this.dialog.open(NoteDialogComponent, {data: note || {}}).afterClosed().subscribe(result => {
+      if (note && note.uid) {
+        this.noteService.modifyNote(result);
+      } else {
+        this.noteService.saveNote(result).then(this.queryNotes.bind(this));
       }
     });
   }
 
   private queryNotes = (): void => {
+    this.noteList = [];
     this.noteService.getNoteList().subscribe(notes => {
-      this.noteList = notes;
-      console.log(notes);
+      notes.forEach(doc => {
+        const newNote = {} as Note;
+        Object.keys(doc.data()).forEach( key => {
+          newNote[key] = doc.data()[key];
+          newNote.uid = doc.id;
+        });
+        this.noteList = [...this.noteList, newNote];
+      });
     });
+
   }
 
 }

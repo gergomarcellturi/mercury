@@ -28,7 +28,6 @@ export class AppComponent implements OnInit {
     translate.use(environment.defaultLang);
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
-      console.log(this.messages[3].timestamp);
     });
   }
 
@@ -36,7 +35,6 @@ export class AppComponent implements OnInit {
   }
 
   public sendMessage = (): void => {
-    console.log(this.text);
     if (!this.text) return;
 
     this.chatService.sendMessage(this.text, '1uFaAU4p6ElQ3vEIkuAA');

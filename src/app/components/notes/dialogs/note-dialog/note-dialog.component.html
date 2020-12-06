@@ -1,21 +1,27 @@
+<form [formGroup]="noteForm" (ngSubmit)="submit()">
+  <div class="dialog-window">
+    <div mat-dialog-title>
+      <mat-form-field>
+        <mat-label>Note Title</mat-label>
+        <label>
+          <input [formControlName]="'title'" matInput>
+        </label>
+      </mat-form-field>
+    </div>
 
-<div class="dialog-window">
-  <div mat-dialog-title>
-    <mat-form-field>
-      <input matInput placeholder="Note Title" [(ngModel)]="note.noteTitle">
-    </mat-form-field>
+    <div mat-dialog-content>
+      <mat-form-field class="example-full-width">
+        <mat-label>Note Text</mat-label>
+        <label>
+          <textarea [formControlName]="'text'" matInput></textarea>
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-raised-button type="button" (click)="closeDialog(null)">Cancel</button>
+      <button mat-raised-button type="submit">{{note.uid ? 'Modify' : 'Save'}}</button>
+    </div>
   </div>
 
-  <div mat-dialog-content>
-    <mat-form-field class="example-full-width">
-      <mat-label>Note Text</mat-label>
-      <textarea matInput placeholder="" [(ngModel)]="note.noteText"></textarea>
-    </mat-form-field>
-  </div>
-
-  <div mat-dialog-actions>
-    <button mat-raised-button (click)="closeDialog(null)">Cancel</button>
-    <button mat-raised-button (click)="closeDialog(note)">{{note === null ? 'Save' : 'Modify'}}</button>
-  </div>
-
-</div>
+</form>

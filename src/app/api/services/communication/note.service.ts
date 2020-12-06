@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {AuthenticationService} from '../misc/authentication.service';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference} from '@angular/fire/firestore';
 import {Note} from '../../interfaces/Note';
-import {User} from '../../interfaces/User';
 
 @Injectable({
   providedIn: 'root'
@@ -16,31 +15,33 @@ export class NoteService {
     private fireStore: AngularFirestore,
   ) { }
 
-  public getNoteList =  (): Observable<Note[]> => {
+  public getNoteList = (): Observable<firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>> => {
     return this.authenticationService.user$.pipe(
       switchMap(user => {
-        return this.fireStore.collection<Note>('notes', ref => ref.where('userUid', '==', user.uid)).valueChanges();
-      })
+        return this.fireStore.collection<Note>('notes', ref => ref.where('userUid', '==', user.uid)).get();
+      }),
     );
   }
 
-  public saveNote = (note: Note): void => {
+  public saveNote = (note: Note): Promise<DocumentReference> => {
     const noteRef: AngularFirestoreCollection<Note> = this.fireStore.collection('notes');
-    noteRef.add(note).then();
+    const data = {
+      noteText: note.noteText,
+      noteTitle: note.noteTitle,
+      timestamp: new Date(),
+      userUid: this.authenticationService.user.uid,
+    } as Note;
+    return noteRef.add(data);
   }
 
   public modifyNote = (note: Note): void => {
-    // const noteRef: AngularFirestoreDocument<Note> = this.fireStore.doc(`notes/${note.}`);
-  }
-
-  private updateUserData(user: User) {
-    const userRef: AngularFirestoreDocument<User> = this.fireStore.doc(`users/${user.uid}`);
+    const noteRef: AngularFirestoreDocument<Note> = this.fireStore.doc(`notes/${note.uid}`);
     const data = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    };
-    return userRef.set(data, {merge: true});
+      noteText: note.noteText,
+      noteTitle: note.noteTitle,
+      timestamp: new Date(),
+      userUid: note.userUid,
+    } as Note;
+    noteRef.set(data, {merge: true}).then();
   }
 }

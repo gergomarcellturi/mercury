@@ -33,14 +33,12 @@ export class ChatService {
     const chatRef = this.fireStore.doc(`chat/${chatUid}`);
 
     this.authenticationService.user$.subscribe(user => {
-      console.log(user);
       const data = {
         uid: user.uid,
         from: user.displayName,
         text,
         timestamp: new Date(),
       };
-      console.log(data);
       chatRef.update(
         {
           messages: firebase.firestore.FieldValue.arrayUnion(data),

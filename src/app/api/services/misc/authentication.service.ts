@@ -47,7 +47,7 @@ export class AuthenticationService {
 
   public signOut = async (): Promise<boolean> => {
     await this.fireAuth.signOut();
-    return this.router.navigate(['/']);
+    return this.router.navigate(['/login']);
   }
 
   private updateUserData(user: User) {

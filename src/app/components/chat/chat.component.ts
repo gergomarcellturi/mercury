@@ -52,7 +52,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   public sendMessage = (): void => {
-    console.log(this.text);
     if (!this.text) return;
 
     this.chatService.sendMessage(this.text, '1uFaAU4p6ElQ3vEIkuAA');

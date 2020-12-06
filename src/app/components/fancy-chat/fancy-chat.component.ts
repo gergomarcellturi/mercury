@@ -31,7 +31,6 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
   ) {
     this.chatService.getChatLists().subscribe(response => {
       this.messages = response[0].messages;
-      console.log(this.messages[3]);
       this.notify(this.messages[this.messages.length - 1]);
     });
     this.pushNotification.requestPermission();
