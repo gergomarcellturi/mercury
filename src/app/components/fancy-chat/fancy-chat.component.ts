@@ -50,7 +50,6 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
   }
 
   public sendMessage = (): void => {
-    console.log(this.text);
     if (!this.text) return;
 
     this.chatService.sendMessage(this.text, '1uFaAU4p6ElQ3vEIkuAA');
@@ -64,7 +63,6 @@ export class FancyChatComponent implements OnInit, AfterViewChecked {
   public onKeydown(event: any): void {
     if (event.keyCode === 13 && event.ctrlKey) {
       this.text += '\n';
-      console.log(this.text);
       return;
     }
     if (event.keyCode === 13 && this.text !== '') {

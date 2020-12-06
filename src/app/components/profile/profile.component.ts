@@ -38,7 +38,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.themeService.getActiveTheme());
   }
 
   public submit = (): void => {
@@ -72,10 +71,8 @@ export class ProfileComponent implements OnInit {
 
   private getEntity = (): User => {
     const user = this.authenticationService.user;
-    console.log(user);
     user.displayName = this.displayName.value as string;
     user.email = this.email.value as string;
-    console.log(user);
     return user;
   }
 
