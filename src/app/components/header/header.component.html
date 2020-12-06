@@ -2,12 +2,12 @@
   <div class="header-container">
     <span class="left">
       <span [ngClass]="{'button-container-1': isStylish}">
-        <button mat-icon-button (click)="action(true)">
+        <button mat-icon-button (click)="goToRoute('home')">
           <mat-icon>chat_bubble_outline</mat-icon>
         </button>
       </span>
       <span [ngClass]="{'button-container-2': isStylish}">
-        <button mat-icon-button (click)="action(false)">
+        <button mat-icon-button (click)="goToRoute('notes')">
           <mat-icon>notes</mat-icon>
         </button>
       </span>
@@ -27,10 +27,6 @@
   <button (click)="goToRoute('profile')" mat-menu-item>
     <mat-icon>person</mat-icon>
     <span>Profile</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
   </button>
   <button mat-menu-item>
     <button mat-flat-button class="button" (click)="authenticationService.signOut()">

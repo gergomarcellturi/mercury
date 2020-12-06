@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NoteService} from '../../api/services/communication/note.service';
 import {Note} from '../../api/interfaces/Note';
 import {MatDialog} from '@angular/material/dialog';
 import {NoteDialogComponent} from './dialogs/note-dialog/note-dialog.component';
+import {ThemeService} from '../../api/services/misc/theme.service';
 
 @Component({
   selector: 'app-notes',
@@ -11,14 +12,17 @@ import {NoteDialogComponent} from './dialogs/note-dialog/note-dialog.component';
 })
 export class NotesComponent implements OnInit {
 
-  @Input() isStylish: boolean;
+  isStylish: boolean;
 
   public noteList: Note[] = [];
 
   constructor(
     public noteService: NoteService,
     private dialog: MatDialog,
-  ) { }
+    public themeService: ThemeService
+  ) {
+    this.isStylish = this.themeService.getActiveTheme().stylish;
+  }
 
   ngOnInit(): void {
     this.queryNotes();

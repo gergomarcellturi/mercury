@@ -1,3 +1,4 @@
+<app-header [isStylish]="this.themeService.getActiveTheme().stylish"></app-header>
 <div class="notes-container" [ngClass]="{'stylish-bg': isStylish}">
   <mat-grid-list cols="8" rowHeight="150px">
     <mat-grid-tile (click)="openNote(null)">

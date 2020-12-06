@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
 
   public toggled = false;
   public collapseSidebar = false;
-  public chatView = true;
 
   constructor(
     public authenticationService: AuthenticationService,

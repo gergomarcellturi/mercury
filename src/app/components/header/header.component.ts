@@ -9,7 +9,6 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() chatView: boolean;
   @Input() isStylish: boolean;
   @Output() chatViewChange: EventEmitter<boolean> = new EventEmitter();
 
@@ -19,11 +18,6 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  public action(value: boolean) {
-    this.chatView = value;
-    this.chatViewChange.emit(this.chatView);
   }
 
   public goToRoute = (route: string): void => {

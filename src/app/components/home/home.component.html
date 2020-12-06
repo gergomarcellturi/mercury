@@ -1,10 +1,10 @@
-<app-header [(chatView)]="chatView" [isStylish]="this.themeService.getActiveTheme().stylish"></app-header>
+<app-header [isStylish]="this.themeService.getActiveTheme().stylish"></app-header>
 <div class="wrapper">
   <div class="sidebar" [ngClass]="{'active': collapseSidebar, 'stylish-sidebar': this.themeService.getActiveTheme().stylish}">
     <app-sidebar [(collapsed)]="collapseSidebar" [isStylish]="this.themeService.getActiveTheme().stylish"></app-sidebar>
   </div>
   <div class="right-side" [ngClass]="{'expanded': collapseSidebar}">
-    <div class="chat-view" *ngIf="chatView else notes">
+    <div class="chat-view">
       <div class="chat-container" *ngIf="this.themeService.getActiveTheme().stylish else regular">
         <app-fancy-chat></app-fancy-chat>
       </div>
@@ -14,9 +14,5 @@
         </div>
       </ng-template>
     </div>
-
-    <ng-template #notes>
-      <app-notes [isStylish]="this.themeService.getActiveTheme().stylish"></app-notes>
-    </ng-template>
   </div>
 </div>
