@@ -47,6 +47,15 @@ Copy the following into todo-spec.js:
 
 The describe and it syntax is from the Jasmine framework. browser is a global created by Protractor, which is used for browser-level commands such as navigation with browser.get.
 
+##Configuration
+Now create the configuration file. Copy the following into conf.js:
+
+exports.config = {
+seleniumAddress: 'http://localhost:4444/wd/hub',
+specs: ['todo-spec.js']
+};
+This configuration tells Protractor where your test files (specs) are, and where to talk to your Selenium Server (seleniumAddress). It will use the defaults for all other configuration. Chrome is the default browser.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
