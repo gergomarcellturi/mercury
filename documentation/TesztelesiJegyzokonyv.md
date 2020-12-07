@@ -12,7 +12,26 @@
 | T8 | Belépés html megefelő és a regisztráció html is. | Sikeres | Tóth Donát|
 | T9 | Sikeresen tudunk belépni. | Sikeres | Tóth Donát |
 | T10 | Kijelentkezés funkció | Sikeres | Tóth Donát |
-
+| T11 | Tested header navigation | Success | Pataki Donát |
+| T12 | Sidebar open/close correctly | Success | Pataki Donát |
+| T13 | Message clipping applied corretly | Success | Pataki Donát |
+| T14 | Name clipping applied correctly | Success | Pataki Donát |
+| T15 | Date clipping applied correctly | Success | Pataki Donát |
+| T16 | Chatroom button clipping applied correctly | Success | Pataki Donát |
+| T17 | Emoji picker works as intended | Success | Pataki Donát |
+| T18 | Tested responsivity | Success | Pataki Donát |
+| T19 | Animation clipping applied correctly | Success | Pataki Donát |
+| T20 | Tested multiline messages | Success | Pataki Donát |
+| T21 | Tested different theme styles | Success | Pataki Donát |
+| T22 | Tested different color themes | Success | Pataki Donát |
+| T23 | Chatroom transition applied correctly | Success | Pataki Donát |
+| T24 | Empty messages cannot be sent | Success | Pataki Donát |
+| T25 | Own messages appear on the right side | Success | Pataki Donát |
+| T26 | Css styles applied correctly on messages | Success | Pataki Donát |
+| T27 | Tested disappearing elements | Success | Pataki Donát |
+| T28 | New line displayed correctly | Success | Pataki Donát |
+| T29 | Mat icons displayed correctly | Success | Pataki Donát |
+| T30 | Chat transformations applied correctly | Success | Pataki Donát |
 | T31 | The authentication process completes securely, with GoogleSignIn options. | Success | Turi Gergő Marcell |
 | T32 | Firebase API can be accessed from the frontend. | Success | Turi Gergő Marcell |
 | T33 | Firestore queries are correctly configured. | Success | Turi Gergő Marcell |
