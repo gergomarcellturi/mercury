@@ -34,3 +34,12 @@ The Angular CLI creates, manages, builds and test your Angular projects. It's bu
 ## The Goal of DevKit
 
 DevKit's goal is to provide a large set of libraries that can be used to manage, develop, deploy and analyze your code.
+
+## Installation
+To get started locally, follow these instructions:
+
+1.If you haven't done it already, make a fork of this repo.
+2.Clone to your local computer using git.
+3.Make sure that you have Node 10.13 or later installed. See instructions here.
+4.Make sure that you have yarn installed; see instructions here.
+5.Run yarn (no arguments) from the root of your clone of this project to install dependencies.
