@@ -58,3 +58,11 @@ npm install -g @angular/cli
 to get a global install of the latest CLI release. Then running any ng command in the example project will automatically find and use the local build of the CLI.
 
 Note: If you are testing ng update, be aware that installing all the tarballs will also update the framework (@angular/core) to the latest version. In this case, simply install the CLI alone with npm install -D ${CLI_REPO}/dist/_angular_cli.tgz, that way the rest of the project remains to be upgraded with ng update.
+
+## Debugging
+To debug an invocation of the CLI, build and install the CLI for an example project, then run the desired ng command as:
+
+node --inspect-brk node_modules/.bin/ng ...
+This will trigger a breakpoint as the CLI starts up. You can connect to this using the supported mechanisms for your IDE, but the simplest option is to open Chrome to chrome://inspect and then click on the inspect link for the node_modules/.bin/ng Node target.
+
+Unfortunately, the CLI dynamically require()'s other files mid-execution, so the debugger is not aware of all the source code files before hand. As a result, it is tough to put breakpoints on files before the CLI loads them. The easiest workaround is to use the debugger; statement to stop execution in the file you are interested in, and then you should be able to step around and set breakpoints as expected.
