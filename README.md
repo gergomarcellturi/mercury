@@ -82,3 +82,11 @@ Run a subset of the tests: node tests/legacy-cli/run_e2e.js tests/legacy-cli/e2e
 When running the debug commands, Node will stop and wait for a debugger to attach. You can attach your IDE to the debugger to stop on breakpoints and step through the code. Also, see IDE Specific Usage for a simpler debug story.
 
 When debugging a specific test, change describe() or it() to fdescribe() and fit() to focus execution to just that one test. This will keep the output clean and speed up execution by not running irrelevant tests.
+
+### IDE Specific Usage
+Some additional tips for developing in specific IDEs.
+
+Intellij IDEA / WebStorm
+To load the project in Intellij products, simply Open the repository folder. Do not Import Project, because that will overwrite the existing configuration.
+
+Once opened, the editor should automatically detect run configurations in the workspace. Use the drop down to choose which one to run and then click the Run button to start it. When executing a debug target, make sure to click the Debug icon to automatically attach the debugger (if you click Run, Node will wait forever for a debugger to attach).
