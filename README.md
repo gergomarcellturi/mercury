@@ -43,3 +43,18 @@ To get started locally, follow these instructions:
 3.Make sure that you have Node 10.13 or later installed. See instructions here.
 4.Make sure that you have yarn installed; see instructions here.
 5.Run yarn (no arguments) from the root of your clone of this project to install dependencies.
+
+## Building and Installing the CLI
+To make a local build:
+
+yarn build --local
+This generates a number of tarballs in the dist/ directory. To actually use the locally built tools, switch to another repository reproducing the specific issue you want to fix (or just generate a local repo with ng new). Then install the locally built packages:
+
+cd "${EXAMPLE_ANGULAR_PROJECT_REPO}"
+npm install -D ${CLI_REPO}/dist/*.tgz
+Builds of this example project will use tooling created from the previous local build and include any local changes. When using the CLI, it will automatically check for a local install and use that if present. This means you can just run:
+
+npm install -g @angular/cli
+to get a global install of the latest CLI release. Then running any ng command in the example project will automatically find and use the local build of the CLI.
+
+Note: If you are testing ng update, be aware that installing all the tarballs will also update the framework (@angular/core) to the latest version. In this case, simply install the CLI alone with npm install -D ${CLI_REPO}/dist/_angular_cli.tgz, that way the rest of the project remains to be upgraded with ng update.
