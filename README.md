@@ -90,3 +90,10 @@ Intellij IDEA / WebStorm
 To load the project in Intellij products, simply Open the repository folder. Do not Import Project, because that will overwrite the existing configuration.
 
 Once opened, the editor should automatically detect run configurations in the workspace. Use the drop down to choose which one to run and then click the Run button to start it. When executing a debug target, make sure to click the Debug icon to automatically attach the debugger (if you click Run, Node will wait forever for a debugger to attach).
+
+### Creating New Packages
+Adding a package to this repository means running two separate commands:
+
+schematics devkit:package PACKAGE_NAME. This will update the .monorepo file, and create the base files for the new package (package.json, src/index, etc).
+devkit-admin templates. This will update the README and all other template files that might have changed when adding a new package.
+For private packages, you will need to add a "private": true key to your package.json manually. This will require re-running the template admin script.
