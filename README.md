@@ -29,3 +29,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## The Goal of Angular CLI
 
 The Angular CLI creates, manages, builds and test your Angular projects. It's built on top of the Angular DevKit.
+
+
+## The Goal of DevKit
+
+DevKit's goal is to provide a large set of libraries that can be used to manage, develop, deploy and analyze your code.
