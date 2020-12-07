@@ -13,3 +13,25 @@
 | T9 | Sikeresen tudunk belépni. | Sikeres | Tóth Donát |
 | T10 | Kijelentkezés funkció | Sikeres | Tóth Donát |
 
+| T31 | The authentication process completes securely, with GoogleSignIn options. | Success | Turi Gergő Marcell |
+| T32 | Firebase API can be accessed from the frontend. | Success | Turi Gergő Marcell |
+| T33 | Firestore queries are correctly configured. | Success | Turi Gergő Marcell |
+| T34 | Messages are correctly transfered to the Firebase backend. | Success | Turi Gergő Marcell |
+| T35 | Chat queries are correctly transfered from the Firebase backend. | Success | Turi Gergő Marcell |
+| T36 | Note service is correctly set up. | Success | Turi Gergő Marcell |
+| T37 | Note queries are correctly transfered from the Firebase backend. | Success | Turi Gergő Marcell |
+| T38 | Note updates are correctly transfered to the Firebase backend. | Success | Turi Gergő Marcell |
+| T39 | Note saves are correctly transfered to the Firebase backend. | Success | Turi Gergő Marcell |
+| T40 | Theme service is correctly set up. | Success | Turi Gergő Marcell |
+| T41 | Theme saving is correctly transfered to the Firebase backend. | Success | Turi Gergő Marcell |
+| T42 | Theme update is correctly transfered to the Firebase backend. | Success | Turi Gergő Marcell |
+| T43 | Name validation in profile is correctly throwing errors. | Success | Turi Gergő Marcell |
+| T44 | Email vlaidation in profile is correctly throwing errors. | Success | Turi Gergő Marcell |
+| T45 | Profile updateing is correctly.  | Success | Turi Gergő Marcell |
+| T46 | Chatroom names are correctly stored in the Firestore. | Success | Turi Gergő Marcell |
+| T47 | User themes are correctly loaded on page refresh. | Success | Turi Gergő Marcell |
+| T48 | User informations are correctly loaded on page refresh. | Success | Turi Gergő Marcell |
+| T49 | Note title validation is correctly throwing errors. | Success | Turi Gergő Marcell |
+| T50 | Note text validation is correclty throwing errors. | Success | Turi Gergő Marcell |
+
+
