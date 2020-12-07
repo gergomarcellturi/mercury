@@ -14,6 +14,11 @@ Angular puts you in control over scalability. Meet huge data requirements by bui
 ## Incedrible tooling
 Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components. Get immediate Angular-specific help and feedback with nearly every IDE and editor. All this comes together so you can focus on building amazing apps rather than trying to make the code work.
 
+## Loved by millons
+From prototype through global deployment, Angular delivers the productivity and scalable infrastructure that supports Google's largest applications.
+
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
