@@ -5,6 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Develop acsross all platforms
 Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop.
 
+## Spees & performance
+Achieve the maximum speed possible on the Web Platform today, and take it further, via Web Workers and server-side rendering.
+
+Angular puts you in control over scalability. Meet huge data requirements by building data models on RxJS, Immutable.js or another push-model.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
