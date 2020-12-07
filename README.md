@@ -66,3 +66,19 @@ node --inspect-brk node_modules/.bin/ng ...
 This will trigger a breakpoint as the CLI starts up. You can connect to this using the supported mechanisms for your IDE, but the simplest option is to open Chrome to chrome://inspect and then click on the inspect link for the node_modules/.bin/ng Node target.
 
 Unfortunately, the CLI dynamically require()'s other files mid-execution, so the debugger is not aware of all the source code files before hand. As a result, it is tough to put breakpoints on files before the CLI loads them. The easiest workaround is to use the debugger; statement to stop execution in the file you are interested in, and then you should be able to step around and set breakpoints as expected.
+
+## Testing
+There are two different test suites which can be run locally:
+
+Unit tests
+Run all tests: yarn bazel test //packages/...
+Run a subset of the tests, use the full Bazel target example: yarn bazel test //packages/schematics/angular:angular_test
+For a complete list of test targets use the following Bazel query: yarn bazel query "tests(//packages/...)"
+You can find more info about debugging [tests with Bazel in the docs.] (https://github.com/angular/angular-cli/blob/master/docs/process/bazel.md#debugging-jasmine_node_test)
+
+End to end tests
+Run: node tests/legacy-cli/run_e2e.js
+Run a subset of the tests: node tests/legacy-cli/run_e2e.js tests/legacy-cli/e2e/tests/i18n/ivy-localize-*
+When running the debug commands, Node will stop and wait for a debugger to attach. You can attach your IDE to the debugger to stop on breakpoints and step through the code. Also, see IDE Specific Usage for a simpler debug story.
+
+When debugging a specific test, change describe() or it() to fdescribe() and fit() to focus execution to just that one test. This will keep the output clean and speed up execution by not running irrelevant tests.
