@@ -36,6 +36,17 @@ Now start up a server with:
 webdriver-manager start
 This will start up a Selenium Server and will output a bunch of info logs. Your Protractor test will send requests to this server to control a local browser. You can see information about the status of the server at http://localhost:4444/wd/hub.
 
+## Write a test
+Open a new command line or terminal window and create a clean folder for testing.
+
+Protractor needs two files to run, a spec file and a configuration file.
+
+Let's start with a simple test that navigates to the todo list example in the AngularJS website and adds a new todo item to the list.
+
+Copy the following into todo-spec.js:
+
+The describe and it syntax is from the Jasmine framework. browser is a global created by Protractor, which is used for browser-level commands such as navigation with browser.get.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
